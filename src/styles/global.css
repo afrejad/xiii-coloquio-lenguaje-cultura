@@ -242,21 +242,35 @@ a {
 }
 
 .hero {
-  background:
-    linear-gradient(180deg, rgba(248, 245, 239, 0.98) 0%, rgba(239, 231, 220, 0.92) 100%);
-  border-bottom: 1px solid rgba(216, 207, 194, 0.95);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-main {
+  position: relative;
   padding: 7rem 0 4rem;
+  min-height: 520px;
 }
 
 .hero-text {
+  position: relative;
+  z-index: 2;
   max-width: 860px;
   margin: 0 auto;
   text-align: center;
 }
 
+.hero-art {
+  position: absolute;
+  right: 32rem;
+  top: 12rem;
+  width: min(920px, 38vw);
+  max-width: 3920px;
+  height: auto;
+  opacity: 0.08;
+  z-index: 1;
+  pointer-events: none;
+}
 .hero-kicker {
   margin: 1rem 0 0;
   color: var(--secondary);
