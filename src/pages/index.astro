@@ -2,9 +2,76 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-const heroImage = `${import.meta.env.BASE_URL}images/fondo-hero.svg`;
 
+
+const base = import.meta.env.BASE_URL;
+
+const heroImage = `${base}images/fondo-hero2.png`;
+
+const logos = [
+  {
+    name: "Universidad Pedagógica y Tecnológica de Colombia",
+    src: `${base}images/logos/uptc.svg`,
+    alt: "Logo de la Universidad Pedagógica y Tecnológica de Colombia"
+  },
+  {
+    name: "Facultad de Ciencias de la Educación",
+    src: `${base}images/logos/facultad-educacion.png`,
+    alt: "Logo de la Facultad de Ciencias de la Educación"
+  },
+  {
+    name: "Doctorado en Lenguaje y Cultura",
+    src: `${base}images/logos/doctorado-lenguaje-cultura.png`,
+    alt: "Logo del Doctorado en Lenguaje y Cultura"
+  },
+  {
+    name: "Maestría en Lingüística",
+    src: `${base}images/logos/maestria-linguistica.png`,
+    alt: "Logo de la Maestría en Lingüística"
+  },
+  {
+    name: "Banco de la República",
+    src: `${base}images/logos/banco-republica.png`,
+    alt: "Logo del Banco de la República"
+  }
+];
+
+const invitados = [
+  {
+    nombre: "Rafael Bautista Segales",
+    afiliacion: "Universidad o institución · Bolivia",
+    descripcion: "Breve semblanza del invitado o invitada.",
+    foto: `${base}images/invitados/invitado-1.jpg`,
+    alt: "Fotografía de Nombre del invitado 1"
+  },
+  {
+    nombre: "Nombre del invitado 2",
+    afiliacion: "Universidad o institución · País",
+    descripcion: "Breve semblanza del invitado o invitada.",
+    foto: `${base}images/invitados/invitado-2.jpg`,
+    alt: "Fotografía de Nombre del invitado 2"
+  },
+  {
+    nombre: "Nombre del invitado 3",
+    afiliacion: "Universidad o institución · País",
+    descripcion: "Breve semblanza del invitado o invitada.",
+    foto: `${base}images/invitados/invitado-3.jpg`,
+    alt: "Fotografía de Nombre del invitado 3"
+  },
+  {
+    nombre: "Nombre del invitado 4",
+    afiliacion: "Universidad o institución · País",
+    descripcion: "Breve semblanza del invitado o invitada.",
+    foto: `${base}images/invitados/invitado-4.jpg`,
+    alt: "Fotografía de Nombre del invitado 4"
+  }
+];
 ---
+
+
+
+
+
 
 <BaseLayout
   title="XIII Coloquio Internacional de Lenguaje y Cultura"
@@ -29,8 +96,6 @@ const heroImage = `${import.meta.env.BASE_URL}images/fondo-hero.svg`;
         <a class="btn btn-secondary" href="#fechas">Ver fechas clave</a>
       </div>
     </div>
-
-    <img src={heroImage} alt="" class="hero-art" >     <alt=""      class="hero-art"    />
   </div>
 </section>
 
@@ -164,6 +229,34 @@ const heroImage = `${import.meta.env.BASE_URL}images/fondo-hero.svg`;
     </section>
 
     <section id="conferencistas" class="section section-cream">
+  <div class="container">
+    <span class="eyebrow">Invitados nacionales e internacionales</span>
+    <h2>Conferencistas centrales</h2>
+    <p class="section-intro">
+      El Coloquio contará con la participación de investigadoras, investigadores,
+      docentes y creadoras y creadores cuyas trayectorias enriquecen el diálogo
+      académico sobre lenguaje, cultura, oralidad, literatura e interculturalidad.
+    </p>
+
+    <div class="grid grid-2" style="margin-top: 2rem;">
+      {invitados.map((invitado) => (
+        <article class="card speaker-card">
+          <img
+            src={invitado.foto}
+            alt={invitado.alt}
+            class="speaker-photo-real"
+            loading="lazy"
+          />
+          <h3>{invitado.nombre}</h3>
+          <p class="muted"><strong>{invitado.afiliacion}</strong></p>
+          <p>{invitado.descripcion}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+    <section id="conferencistas" class="section section-cream">
       <div class="container">
         <span class="eyebrow">Conferencistas centrales</span>
         <h2>Invitadas e invitados internacionales</h2>
@@ -173,13 +266,13 @@ const heroImage = `${import.meta.env.BASE_URL}images/fondo-hero.svg`;
         <div class="grid grid-3">
           <article class="card">
             <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
+            <h3>Rafael Bautista Segales</h3>
+            <p class="muted">Universidad / institución · Bolivia</p>
+            <p>Filósofo, teórico político, epistemólogo y geopolitólogo boliviano. Ex titular de la Dirección Nacional de Geopolítica del Vivir Bien y Política Exterior de la Vicepresidencia del Estado Plurinacional de Bolivia. Autor de más de 18 libros.</p>
           </article>
           <article class="card">
             <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
+            <h3>Dani Velásquez</h3>
             <p class="muted">Universidad / institución · País</p>
             <p>Breve semblanza académica y línea principal de trabajo.</p>
           </article>
@@ -220,8 +313,8 @@ const heroImage = `${import.meta.env.BASE_URL}images/fondo-hero.svg`;
         <div class="grid grid-3">
           <article class="card">
             <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
+            <h3>Ángela Chaverra</h3>
+            <p class="muted">Universidad de Antioquia</p>
             <p>Breve semblanza académica y línea principal de trabajo.</p>
           </article>
           <article class="card">
@@ -350,6 +443,26 @@ const heroImage = `${import.meta.env.BASE_URL}images/fondo-hero.svg`;
         </div>
       </div>
     </section>
+    <section id="organizan" class="section section-sand">
+  <div class="container">
+    <span class="eyebrow">Organizan y apoyan</span>
+    <h2>Instituciones participantes</h2>
+    <p class="section-intro">
+      El XIII Coloquio Internacional de Lenguaje y Cultura es posible gracias al
+      trabajo conjunto de programas académicos, unidades institucionales y entidades
+      aliadas comprometidas con la reflexión sobre lenguaje, cultura y pedagogías críticas.
+    </p>
+
+    <div class="logos-grid" style="margin-top: 2rem;">
+      {logos.map((logo) => (
+        <div class="logo-card">
+          <img src={logo.src} alt={logo.alt} class="institution-logo" loading="lazy" />
+          <p>{logo.name}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
   </main>
 
   <Footer />

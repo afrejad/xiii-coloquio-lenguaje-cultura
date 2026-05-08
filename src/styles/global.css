@@ -165,7 +165,6 @@ a {
   border-color: var(--secondary);
   color: var(--secondary);
 }
-
 .site-header {
   position: sticky;
   top: 0;
@@ -174,13 +173,12 @@ a {
   background: rgba(243, 239, 232, 0.92);
   border-bottom: 1px solid rgba(216, 207, 194, 0.95);
 }
-
 .site-header-inner {
   min-height: 82px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .brand {
@@ -188,7 +186,8 @@ a {
   align-items: center;
   gap: 0.9rem;
   line-height: 1.1;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  max-width: 320px;
 }
 
 .brand-mark {
@@ -203,36 +202,40 @@ a {
   letter-spacing: 0.04em;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   box-shadow: 0 8px 20px rgba(34, 56, 74, 0.15);
+  flex-shrink: 0;
 }
 
 .brand-text {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .brand-text strong {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 800;
   color: var(--text);
 }
 
 .brand-text span {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
   align-items: center;
   justify-content: flex-end;
+  min-width: 0;
 }
 
 .nav a {
   color: var(--muted);
   font-weight: 600;
-  font-size: 0.94rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -240,16 +243,19 @@ a {
   color: var(--primary);
   transform: translateY(-1px);
 }
-
 .hero {
   position: relative;
   overflow: hidden;
+  background:
+    linear-gradient(rgba(248, 245, 239, 0.95), rgba(239, 231, 220, 0.6)),
+    url("/xiii-coloquio-lenguaje-cultura/images/fondo-hero1.png") center center / cover no-repeat;
+  border-bottom: 1px solid rgba(216, 207, 194, 0.95);
 }
 
 .hero-main {
   position: relative;
   padding: 7rem 0 4rem;
-  min-height: 520px;
+  min-height: 560px;
 }
 
 .hero-text {
@@ -261,10 +267,10 @@ a {
 }
 
 .hero-art {
-  position: absolute;
-  right: 32rem;
+  position: fixed;
+  right: 64 rem;
   top: 12rem;
-  width: min(920px, 38vw);
+  width: min(1024px, 38vw);
   max-width: 3920px;
   height: auto;
   opacity: 0.08;
@@ -392,6 +398,7 @@ a {
   border-radius: 14px;
 }
 
+
 @media (max-width: 980px) {
   .grid-2,
   .grid-3,
@@ -449,4 +456,70 @@ a {
     justify-content: flex-start;
   }
 }
+}
+.speaker-card {
+  overflow: hidden;
+}
+
+.speaker-photo-real {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+  display: block;
+  background: #ddd;
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.logo-card {
+  background: rgba(255, 253, 250, 0.82);
+  border: 1px solid rgba(216, 207, 194, 0.95);
+  border-radius: 20px;
+  padding: 1.25rem 1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  text-align: center;
+}
+
+.institution-logo {
+  max-width: 100%;
+  width: 160px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .logos-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .logos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .institution-logo {
+    width: 140px;
+    height: 80px;
+  }
 }
