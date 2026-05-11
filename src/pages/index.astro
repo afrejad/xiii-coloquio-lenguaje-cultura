@@ -21,7 +21,7 @@ const logos = [
   },
   {
     name: "Doctorado en Lenguaje y Cultura",
-    src: "/xiii-coloquio-lenguaje-cultura/images/logos/doctorado.png",
+    src: "/xiii-coloquio-lenguaje-cultura/images/logos/doctorado.svg",
     alt: "Logo Doctorado en Lenguaje y Cultura"
   },
   {
@@ -39,31 +39,59 @@ const logos = [
 const invitados = [
   {
     nombre: "Rafael Bautista Segales",
-    afiliacion: "Universidad o institución · Bolivia",
-    descripcion: "Breve semblanza del invitado o invitada.",
-    foto: `${base}images/invitados/invitado-1.jpg`,
-    alt: "Fotografía de Nombre del invitado 1"
+    afiliacion: "Universidad · Bolivia",
+    descripcion: "Filósofo, teórico político, epistemólogo y geopolitólogo boliviano. Ex titular de la Dirección Nacional de Geopolítica del Vivir Bien y Política Exterior de la Vicepresidencia del Estado Plurinacional de Bolivia. Autor de más de 18 libros.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-1.jpg",
+    alt: "Foto de Invitado 1"
   },
   {
-    nombre: "Nombre del invitado 2",
-    afiliacion: "Universidad o institución · País",
-    descripcion: "Breve semblanza del invitado o invitada.",
-    foto: `${base}images/invitados/invitado-2.jpg`,
-    alt: "Fotografía de Nombre del invitado 2"
+    nombre: "Alicia Hopkins",
+    afiliacion: "Universidad Nacional Autónoma de México · México",
+    descripcion: "Doctora en Estudios Latinoamericanos en el área de Filosofía. Docente y feminista dedicada al estudio de la Filosofía Política, en específico a la latinoamericana. Forma parte de la escuela de pensamiento y de la Asociación de la Filosofía de la Liberación (AFyL)",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-2.jpg",
+    alt: "Foto de Invitado 2"
   },
   {
-    nombre: "Nombre del invitado 3",
-    afiliacion: "Universidad o institución · País",
-    descripcion: "Breve semblanza del invitado o invitada.",
-    foto: `${base}images/invitados/invitado-3.jpg`,
-    alt: "Fotografía de Nombre del invitado 3"
+    nombre: "Ángela Chaverra",
+    afiliacion: "Universidad de Antioquia · Colombia",
+    descripcion: "Psicóloga, licenciada en formación estética, especialista en semiótica y hermenéutica del arte, magíster en estética y doctora en artes. Ha sido docente y creadora por décadas. Directora del reconocido colectivo artístico y semillero El Cuerpo Habla, que desde el año 2006 ha explorado las potencias expresivas y críticas del cuerpo en la escena artística contemporánea.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-3.jpg",
+    alt: "Foto de Invitado 1"
   },
   {
-    nombre: "Nombre del invitado 4",
-    afiliacion: "Universidad o institución · País",
-    descripcion: "Breve semblanza del invitado o invitada.",
-    foto: `${base}images/invitados/invitado-4.jpg`,
-    alt: "Fotografía de Nombre del invitado 4"
+    nombre: "Dani Velásquez ",
+    afiliacion: "Universidade Federal da Bahia · Brasil",
+    descripcion: "Descripción breve.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-4.jpg",
+    alt: "Foto de Invitado 2"
+  },
+  {
+    nombre: "Nelson Hurtado",
+    afiliacion: "Universidad · Venezuela",
+    descripcion: "Descripción breve.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-5.jpg",
+    alt: "Foto de Invitado 1"
+  },
+  {
+    nombre: "Fernando Urbina",
+    afiliacion: "Universidad Nacional de Colombia· Colombia",
+    descripcion: "Descripción breve.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-6.jpg",
+    alt: "Foto de Invitado 2"
+  },
+  {
+    nombre: "Nancy Carvajal",
+    afiliacion: "UPTC· Colombia",
+    descripcion: "Descripción breve.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-7.jpg",
+    alt: "Foto de Invitado 2"
+  },
+  {
+    nombre: "Rogério Lobo Sáber ",
+    afiliacion: "Universidad · Brasil",
+    descripcion: "Descripción breve.",
+    foto: "/xiii-coloquio-lenguaje-cultura/images/invitados/invitado-8.jpg",
+    alt: "Foto de Invitado 2"
   }
 ];
 ---
@@ -103,15 +131,15 @@ const invitados = [
     <div class="container hero-band-grid">
       <div class="hero-band-item">
         <span class="hero-band-label">Lugar</span>
-        <strong>Sede central UPTC, Tunja, Boyacá, Colombia</strong>
+        <strong>Sede central UPTC, Tunja, Colombia</strong>
       </div>
       <div class="hero-band-item">
         <span class="hero-band-label">Modalidad</span>
-        <strong>Presencial - Híbrida</strong>
+        <strong>Presencial</strong>
       </div>
       <div class="hero-band-item">
         <span class="hero-band-label">Participación</span>
-        <strong>Conferencias, ponencias y mesas temáticas</strong>
+        <strong>Ponencias y mesas temáticas</strong>
       </div>
       <div class="hero-band-item">
         <span class="hero-band-label">Convocatoria</span>
@@ -189,41 +217,46 @@ const invitados = [
         <div class="grid grid-3">
           <article class="card">
             <h3>I. Pedagogías decoloniales y descolonización del saber</h3>
-            <li>Pedagogía desde la descolonización</li>
+            <li>Pedagogía desde la descolonización para la justicia epistémica</li>
               <li>Crítica a los modelos hegemónicos de enseñanza</li>
-              <li>Colonialidad del saber, del poder y del ser</li>
-              <li>Educación y justicia epistémica</li>
+              <li>Colonialidad del saber, del poder y del ser en la educación</li>
+              <li>Investigación-creación para la educación crítica e intercultural</li>
           </article>
           <article class="card">
             <h3>II. Interculturalidad crítica, territorialidades y epistemologías del Sur</h3>
-            <li>Pensar desde Améfrica Ladina</li>
+            <li>Pensamiento y epistemología afroindígenas en América Latina: Améfrica Ladina</li>
               <li>Saberes situados, territoriales, comunitarios y ancestrales</li>
-              <li>Educación, memoria y resistencia</li>
+              <li>Experiencias de memoria y resistencia culturales</li>
           </article>
           </article>
           <article class="card">
-            <h3>III. Literatura, oralidad y reexistencias culturales</h3>
-            <li>literatura, memoria y resistencia cultural</li>
+            <h3>III. De la ciudad al campo y del campo a la ciudad: Escritura, oralidad y tensiones culturales y sociogeográficas</h3>
+            <li>Experiencias de la oralidad y escritura en contextos educativos urbanos y rurales</li>
               <li>Literatura oral y otras formas de entender lo literario</li>
               <li>Narrativas populares, comunitarias y subalternizadas</li>
           </article>
           <article class="card">
             <h3>IV. Género, disidencias y escrituras desde los márgenes</h3>
-            <li>Pedagogías críticas desde el cuerpo, la diferencia y la disidencia</li>
-              <li>feminismos decoloniales</li>
-              <li>narrativas queer</li>
+            <li>Feminismos decoloniales: tensiones y resignificaciones del género</li>
+              <li>Interseccionalidad, cuerpo-territorio y saberes subalternos</li>
+              <li>Estéticas desde los márgenes: memoria, archivo y producción simbólica</li>
+              <li>Pedagogías críticas y encarnadas: cuerpo, afectividad, diferencia y prácticas de resistencia</li>
           </article>
           <article class="card">
             <h3>V. Tecnologías críticas, inteligencia artificial y educación</h3>
-            <li>nuevas tecnologías en la pedagogía crítica</li>
-              <li>inteligencia artificial y sesgo algorítmico</li>
-              <li>plataformas digitales, vigilancia, automatización y poder</li>
-              <li>alfabetizaciones críticas y justicia digital</li>
+            <li>Nuevas tecnologías en la pedagogía crítica</li>
+              <li>Inteligencia artificial y sesgo algorítmico</li>
+              <li>Plataformas digitales, vigilancia, automatización y poder</li>
+              <li>Alfabetizaciones críticas y justicia digital</li>
           </article>
           <article class="card">
-            <h3>VI. Experiencias pedagógicas y creación académica</h3>
-            <p>Investigación-creación, innovación educativa, diseño curricular y experiencias transformadoras en el aula.</p>
-          </article>
+            <h3>VI. Experiencias para la proyección social y comunitaria</h3>
+             <li>Prácticas pedagógicas situadas en contextos comunitarios</li>
+              <li>Vinculación universidad–territorio y saberes compartidos</li>
+              <li>Educación popular, extensión crítica y co-creación de conocimiento</li>
+              <li>Innovación educativa desde enfoques decoloniales e interculturales</li>
+              <li>Sistematización de experiencias y memorias pedagógicas</li>
+                      </article>
         </div>
       </div>
     </section>
@@ -256,83 +289,7 @@ const invitados = [
   </div>
 </section>
 
-    <section id="conferencistas" class="section section-cream">
-      <div class="container">
-        <span class="eyebrow">Conferencistas centrales</span>
-        <h2>Invitadas e invitados internacionales</h2>
-        <p class="section-intro">
-          El Coloquio contará con las y los siguientes invitad@s internacionales:
-        </p>
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Rafael Bautista Segales</h3>
-            <p class="muted">Universidad / institución · Bolivia</p>
-            <p>Filósofo, teórico político, epistemólogo y geopolitólogo boliviano. Ex titular de la Dirección Nacional de Geopolítica del Vivir Bien y Política Exterior de la Vicepresidencia del Estado Plurinacional de Bolivia. Autor de más de 18 libros.</p>
-          </article>
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Dani Velásquez</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-        </div>
-            <p class="muted"></p>
-
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-        </div>
-
-        <h2>Invitadas e invitados nacionales</h2>
-        <p class="section-intro">
-          El Coloquio contará con las y los siguientes invitad@s nacionales:
-        </p>
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Ángela Chaverra</h3>
-            <p class="muted">Universidad de Antioquia</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-          <article class="card">
-            <div class="speaker-photo"></div>
-            <h3>Nombre de la conferencista o del conferencista</h3>
-            <p class="muted">Universidad / institución · País</p>
-            <p>Breve semblanza académica y línea principal de trabajo.</p>
-          </article>
-        </div>
-      
-      </div>
-    </section>
+    
 
     <section id="convocatoria" class="section section-sand">
       <div class="container">
