@@ -260,7 +260,7 @@ a {
 .hero-only-image {
   width: 100%;
   min-height: 100vh;
-  background: url("/xiii-coloquio-lenguaje-cultura/images/fondo-hero1.png") center center / cover no-repeat;
+  background: url("/images/fondo-hero1.png") center center / cover no-repeat;
 }
 .hero-main {
   position: relative;
