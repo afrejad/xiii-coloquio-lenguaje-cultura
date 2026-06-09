@@ -421,6 +421,29 @@ a {
   }
 }
 
+
+
+
+@media (max-width: 768px) {
+  .hero-only-image {
+    aspect-ratio: 9 / 12;
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 720px) {
   .site-header-inner {
     padding: 0.9rem 0;
