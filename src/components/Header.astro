@@ -5,19 +5,51 @@
 
       <span class="brand-text">
         <strong>Coloquio Internacional</strong>
-        <span>en Lenguaje y Cultura</span>
-        <span>UPTC-Colombia</span>
+        <span>de Lenguaje y Cultura</span>
       </span>
     </a>
 
-    <nav class="nav" aria-label="Navegación principal">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Abrir menú de navegación"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="primary-navigation" class="nav" aria-label="Navegación principal">
       <a href="#presentacion">Presentación</a>
       <a href="#objetivos">Objetivos</a>
       <a href="#ejes">Ejes temáticos</a>
       <a href="#conferencistas">Conferencistas</a>
-      <a href="#fechas">Fechas clave</a>
       <a href="#convocatoria">Convocatoria</a>
-      
-          </nav>
+      <a href="#fechas">Fechas clave</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </div>
 </header>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuButton?.addEventListener("click", () => {
+    const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+
+    menuButton.setAttribute("aria-expanded", String(!isExpanded));
+    nav?.classList.toggle("is-open", !isExpanded);
+    menuButton.classList.toggle("is-active", !isExpanded);
+  });
+
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      menuButton?.classList.remove("is-active");
+      menuButton?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
