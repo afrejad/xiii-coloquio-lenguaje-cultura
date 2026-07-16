@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { url } from 'astro:schema';
 
 
 const base = import.meta.env.BASE_URL;
@@ -12,7 +13,9 @@ const logos = [
   {
     name: "U P T C",
     src: "/images/logos/uptc.svg",
-    alt: "Logo UPTC"
+    alt: "Logo UPTC",
+    url: "https://www.uptc.edu.co/"
+    
   },
   {
     name: "Facultad de Ciencias de la Educación",
@@ -119,7 +122,8 @@ const invitados = [
         <a class="btn btn-secondary" href="#fechas">Ver fechas clave</a>
       </div>
 </section>
-    <!-- <section id="inicio" class="hero">
+<!--    -->
+<!-- <section id="inicio" class="hero">
   <div class="container hero-main">
     <div class="hero-text">
       <span class="eyebrow">21, 22 y 23 de octubre de 2026 · Tunja, Boyacá · Colombia</span>
@@ -165,7 +169,10 @@ const invitados = [
         <span class="eyebrow">Presentación</span>
         <h2>Un espacio para pensar el lenguaje y la cultura desde perspectivas críticas</h2>
         <p class="section-intro">
-          El XIII Coloquio Internacional de Lenguaje y Cultura se proyecta como un escenario de
+          El XIII Coloquio Internacional de Lenguaje y Cultura es un evento organizado por el  
+          <a href="https://www.uptc.edu.co/sitio/portal/sitios/universidad/vic_aca/facultades/fac_educa/posg/doc_90933_t/index.html"> <strong><u>Doctorado en Lenguaje y Cultura</u></strong></a> 
+           y la <a href="https://www.uptc.edu.co/sitio/portal/sitios/universidad/vic_aca/facultades/fac_educa/posg/mae_13187_t/index.html"> <strong><u>Maestría en Lingüística</u></strong></a> 
+           de la <a href="https://www.uptc.edu.co"></a> <strong> Universidad Pedagógica y Tecnológica de Colombia (UPTC)</strong></a>. Este Coloquio se proyecta como un escenario de
           encuentro académico para debatir los desafíos contemporáneos de la pedagogía, la literatura,
           la oralidad, la cultura y las tecnologías, con especial atención a las voces históricamente
           desplazadas y a las epistemologías construidas desde el sur global.
@@ -357,8 +364,8 @@ const invitados = [
             </p>
             <h3>Modos de participación</h3>
             <ul class="list-clean">
-              <li>Ponencias individuales</li>
-              <li>Mesas temáticas (mínimo 3 ponencias, máximo 5 ponencias)</li>
+              <li><strong>Ponencias individuales:</strong> Propuesta con título, resumen(máximo 300 palabras, con objetivos, metodología y principales hallazgos o argumentos), y palabras clave</li>
+              <li><strong>Mesas temáticas:</strong> mínimo 3 ponencias, máximo 5 ponencias</li>
              </ul>
           </article>
           <article class="card">
@@ -379,7 +386,7 @@ const invitados = [
       </div>
     </section>
 
-    <section id="convocatoria" class="section section-cream">
+    <section id="inscripciones" class="section section-cream">
       <div class="container">
         <span class="eyebrow">Inscripción</span>
         <h2>Valores de Inscripción</h2>
