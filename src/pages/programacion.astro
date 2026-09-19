@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+type Talk = { title: string; people: string };
+type Event = { id: string; time: string; room: string; kind: string; title: string; people?: string; duration?: string; talks?: Talk[]; note?: string };
+type Day = { id: string; short: string; date: string; events: Event[] };
+
+const days: Day[] = [
+  {
+    id: 'miercoles-21', short: 'Mié. 21', date: 'Miércoles 21 de octubre', events: [
+      { id:'registro-21', time:'7:45–12:00', room:'Paraninfo', kind:'Registro', title:'Apertura de mesa de registro' },
+      { id:'conferencia-inaugural', time:'8:30–10:30', room:'Paraninfo', kind:'Apertura y conferencia inaugural', title:'Lenguajes. El gesto, la palabra y el trazo en la milenaria tradición ancestral amazónica', people:'Maestro Fernando Urbina Rangel', duration:'2 h' },
+      { id:'mesa-1', time:'10:20–12:00', room:'Auditorio Hunza 1', kind:'Mesa temática 1', title:'Literatura escrita por mujeres y viceversa', duration:'1 h 40 min', talks:[
+        {title:'El archivo afectivo en A cabeça do santo de Socorro Acioli', people:'Ayda Elizabeth Blanco Estupiñán · UPTC'},
+        {title:'Mujer y arte, entre la palabra compartida y la desobediencia', people:'Ángela María Díaz Martínez · Colegio Nuestra Señora de Fátima, Tunja'},
+        {title:'El retrato de la mujer en Rosario Castellanos y Marvel Moreno', people:'Yaniana Castro Rátiva · Instituto Caro y Cuervo'},
+        {title:'Lecturas feministas de La vorágine y Noche negra: una aproximación comparativa', people:'Nasli Giomara Farfán Pérez · Universidad Surcolombiana'} ]},
+      { id:'conferencia-2', time:'10:45–12:00', room:'Paraninfo', kind:'Conferencia 2', title:'Historias Globales desde el Sur, escapando de la jaula historiográfica colonial', people:'Dr. Jorge Romero Losacco', duration:'1 h 15 min' },
+      { id:'panel-narrativas-decoloniales', time:'14:00–16:00', room:'Paraninfo', kind:'Panel', title:'Narrativas decoloniales: literatura, medios y prácticas artísticas en América Latina', people:'Rogério Lobo Sáber, Ángela Chaverra y Dany Velásquez', duration:'2 h' },
+      { id:'mesa-2', time:'14:00–16:00', room:'Auditorio Hunza 1', kind:'Mesa temática 2', title:'¿Puede la investigación ser una ceremonia? Caminando colectivamente una praxis relacional y decolonial desde Knowledge in Action', duration:'2 h', talks:[
+        {title:'¿Puede la investigación ser una ceremonia? La investigación como relación, responsabilidad y reciprocidad',people:'Nancy Emilce Carvajal Medina · UPTC'},
+        {title:'Caminar juntxs: construir comunidad investigativa',people:'Juliana Estefanía Barrote Ormaza · UPTC'},
+        {title:'Transformarse investigando. Devenir investigadores relacionales y decoloniales',people:'Silvia Daniela Sierra Vargas · UPTC'},
+        {title:'Más allá del método. Descolonizar las prácticas de producción de conocimiento',people:'Maribel Rojas Fernández · UPTC'},
+        {title:'Cierre colectivo. Hacia futuros posibles: investigación, ceremonia y praxis decolonial',people:'Todo el grupo'} ]},
+      { id:'conferencia-3', time:'16:15–17:30', room:'Paraninfo', kind:'Conferencia 3', title:'De la violencia escolar a la pedagogía de la liberación en el aula: apuestas desde el feminismo y la educación popular', people:'Dra. Alicia Hopkins', duration:'1 h 15 min' },
+      { id:'mesa-3', time:'16:15–17:55', room:'Auditorio Hunza 1', kind:'Mesa temática 3', title:'Interculturalidad en las áreas de salud y educación', duration:'1 h 40 min', talks:[
+        {title:'Tejiendo saberes en la partería intercultural: identidad mestiza, sabiduría del cuerpo y práctica decolonial',people:'Sara Barbosa · Fundación Mujeres Bachué'},
+        {title:'La interculturalidad, un desafío de la atención en salud en Colombia',people:'Jonathan García Jiménez · Pontificia Universidad Javeriana y Hospital Universitario Nacional de Colombia'},
+        {title:'¿De qué hablamos cuando hablamos sobre interculturalidad? Una mirada a tres universidades en Colombia',people:'Jhon Eduardo Mosquera Pérez, Lisseth Rojas Barreto y Alexander Ramírez Espinosa · UPTC'},
+        {title:'Interculturalidad en el currículo de idiomas en Colombia: realidades y desafíos',people:'Iván Ricardo Miranda Montenegro · UPTC'} ]},
+      { id:'socializacion-beca', time:'17:30–18:00', room:'Paraninfo', kind:'Socialización de beca', title:'Coordenadas de lo efímero: cartografía viva de la dramaturgia tunjana. Beca de investigación teatral', people:'Doctoranda Viviana Alba', duration:'30 min' },
+      { id:'obra-teatro', time:'18:15–19:15', room:'Auditorio por definir', kind:'Actividad cultural', title:'Obra de teatro', duration:'1 h', note:'Probablemente Teatro Goranchacha, Edificio de Posgrados, primer piso.' }
+    ]
+  },
+  {
+    id:'jueves-22', short:'Jue. 22', date:'Jueves 22 de octubre', events:[
+      { id:'registro-22', time:'8:00–12:00', room:'Paraninfo', kind:'Registro', title:'Mesa de registro' },
+      { id:'mesa-4', time:'8:30–10:10', room:'Paraninfo', kind:'Mesa temática 4', title:'Semiótica y análisis crítico del discurso', duration:'1 h 40 min', talks:[
+        {title:'Imágenes que reclaman memoria: videoclip de protesta juvenil, cultura visual y estallido social colombiano',people:'Jazmín Adriana Rubiano Rubiano · UPTC'},
+        {title:'Minga, territorio y voz indígena en la prensa digital colombiana',people:'Harvey Humberto Merchán Cante · Universidad Distrital Francisco José de Caldas'},
+        {title:'Análisis multimodal en las caricaturas de Matador relacionadas con el COVID-19 en Colombia',people:'Deisy Lorena Díaz Ávila · UPTC'},
+        {title:'Dinero colombiano: tensión polifónica del discurso de nación',people:'Raúl Firacative-Ruiz · UPTC'} ]},
+      { id:'mesa-5', time:'8:00–10:25', room:'Auditorio Hunza 1', kind:'Mesa temática 5', title:'Lengua, educación y territorio: investigación con comunidades indígenas', duration:'2 h', talks:[
+        {title:'Retos de la educación propia para la enseñanza de la diversidad étnica y la interculturalidad',people:'Álvaro Ricardo Gómez Murillo · UPTC'},
+        {title:'Jíbibɨrɨ úai: las prácticas del mambeadero como metodología para la descolonización',people:'Maribel Berrío Moncada · Universidad de Antioquia'},
+        {title:'Cuando hablar español resulta más fácil: ecología de presiones y desplazamiento lingüístico del kamënts̈á',people:'Jaime Alejandro Barón Sotto · UPTC'},
+        {title:'La investigación desde adentro: documentación y revitalización lingüística',people:'Andersson David Causaya Cerón · Instituto Caro y Cuervo'},
+        {title:'De la palabra heredada al conocimiento escrito',people:'Jhina Luz Gómez Villera · Universidad INCCA de Colombia'},
+        {title:'Relaciones con el agua y traducción colonial',people:'Luis Alejandro Cruz González · UPTC'} ]},
+      { id:'conferencia-4', time:'10:25–12:00', room:'Paraninfo', kind:'Conferencia 4', title:'Epistemología descolonial', people:'Maestro Rafael Bautista Segales', duration:'1 h 35 min' },
+      { id:'mesa-6', time:'10:40–12:00', room:'Auditorio Hunza 1', kind:'Mesa temática 6', title:'Pedagogías decoloniales y desafíos contemporáneos', duration:'1 h 20 min', talks:[
+        {title:'Pedagogías de la re-existencia',people:'Geraldine Sierra Lozano · Universidad Distrital Francisco José de Caldas'},
+        {title:'Cuerpos en suspensión y polifonías equitativas',people:'Ana Angulo, Paula González y Yisela Pulido · Colectiva Leu y Teu'},
+        {title:'Decolonizar la investigación: una reflexión sobre la producción de conocimiento',people:'Dubán Santiago López Suárez · UPTC'} ]},
+      { id:'taller-1', time:'14:00–15:15', room:'Paraninfo', kind:'Taller 1', title:'Educación popular en el aula: dinámicas y herramientas para docentes', people:'Dra. Alicia Hopkins', duration:'1 h 15 min' },
+      { id:'mesa-7', time:'14:00–15:20', room:'Auditorio Hunza 1', kind:'Mesa temática 7', title:'Lo que se produce en el margen: forma, raíz y territorio en la narrativa latinoamericana', duration:'1 h 20 min', talks:[
+        {title:"Escrituras ch'ixi de mediados de siglo: exclusión, forma y colonialismo interno",people:'Hernán Darío Hernández Quintero · Universidad Tecnológica de Pereira'},
+        {title:'Literatura afrocaribeña: una ventana para redescubrir la «tercera raíz»',people:'Carlos Andrés Vélez Peláez · Universidad Tecnológica de Pereira'},
+        {title:'La experiencia del paisaje selvático y la transformación del sujeto en Las niñas del naranjel',people:'Jackeline Parra Londoño · Universidad Tecnológica de Pereira'} ]},
+      { id:'taller-historias-globales', time:'15:30–16:45', room:'Paraninfo', kind:'Taller 2', title:'Semiosis decolonial: Hacia una crítica material de la «postverdad»', people:'Dr. Jorge Romero Losacco', duration:'1 h 15 min' },
+      { id:'conferencia-5', time:'15:35–16:35', room:'Auditorio Hunza 1', kind:'Conferencia 5', title:'Leer de otro modo: literatura y la invención de nuevas pedagogías', people:'Dr. Rogério Lobo Sáber', duration:'1 h' },
+      { id:'instalacion-mesa-8', time:'16:35–16:40', room:'Auditorio Hunza 1', kind:'Transición', title:'Instalación de mesa 8', duration:'5 min' },
+      { id:'cuando-el-cuerpo-habla', time:'16:45–18:00', room:'Paraninfo', kind:'Performance / conferencia-performance', title:'Cuando el cuerpo habla', people:'Dra. Ángela Chaverra', duration:'1 h 15 min', note:'Formato por definir.' },
+      { id:'mesa-8', time:'16:40–18:00', room:'Auditorio Hunza 1', kind:'Mesa temática 8', title:'Relaciones entre lengua, identidad y territorio', duration:'1 h 20 min', talks:[
+        {title:'Variación léxico-semántica y paralingüística en el argot del transporte de carga pesada de Duitama',people:'Cristian Felipe Blanco Martínez · UPTC'},
+        {title:'La identidad regional en el moño: prácticas discursivas de la copla tradicional',people:'María José Nieves Herreño · UPTC'},
+        {title:'Implicaturas del adjetivo calificativo en el habla de Tunja',people:'Jhoandry Jholima López García · UPTC'} ]}
+    ]
+  },
+  {
+    id:'viernes-23', short:'Vie. 23', date:'Viernes 23 de octubre', events:[
+      { id:'registro-23', time:'8:00–12:00', room:'Paraninfo', kind:'Registro', title:'Mesa de registro' },
+      { id:'mesa-9', time:'8:15–10:15', room:'Paraninfo', kind:'Mesa temática 9', title:'Narrativas al margen: contextos educativos, estéticas y territorios', duration:'2 h', talks:[
+        {title:'Narrativas pedagógicas de maestras rurales afrodescendientes en los Montes de María',people:'Berlinda Isabel Cassiani Molina · UPTC'},
+        {title:'Habitar entre lenguas: experiencias narradas por estudiantes indígenas universitarios del Cauca',people:'Maribel Rojas Fernández · UPTC'},
+        {title:'Corporalidades campesinas y prácticas artísticas',people:'Luis Yecid Bayona · UPTC'},
+        {title:'Sentidos de la experiencia docente en el modelo educativo propio Shama Zhigui',people:'Gabriel Ángel Galiano Rangel · UPTC'},
+        {title:'La dimensión estética en las prácticas del decir de personas habitantes de calle',people:'Ricardo Abdul Canizales Romero · UPTC'} ]},
+      { id:'mesa-10', time:'8:15–10:15', room:'Auditorio Hunza 1', kind:'Mesa temática 10', title:'Mujeres campesinas, educación rural y género', duration:'2 h', talks:[
+        {title:'Voces de mujeres rurales: cuidado y normas basadas en género en Toca, Boyacá',people:'Michell Dayana Vanegas Becerra · UPTC'},
+        {title:'El cuerpo-mujer rural como territorio epistémico',people:'Cristian Camilo Reyes Galeano y Shari Daniela Ramírez Salazar · Universidad del Quindío'},
+        {title:'Sembrando voces: leer, escribir y hablar desde la raíz',people:'Martha Isabel Gómez Gómez, María Trinidad Cabanzo Cuadrado y Ruth Julieth Muñoz Pino · Universidad INCCA'},
+        {title:'Florecer juntas: educación popular con enfoque de género',people:'Laura Valentina Barragán Sierra, Elkin Durán Mancipe y Fabio Edisson Morera Forero · Universidad Santiago de Cali'},
+        {title:'Comprensión inferencial y crítica mediante aprendizaje colaborativo en aula multigrado rural',people:'Sandra Rocío Vargas Amézquita · UPTC'} ]},
+      { id:'conversatorio-multilinguismo', time:'10:30–12:00', room:'Paraninfo', kind:'Conversatorio abierto', title:'Multilingüismo, derechos lingüísticos y política pública: debates en torno a la Ley 2630 de 2026', people:'Moderan Nancy Emilce Carvajal Medina y Andersson David Causaya Cerón', duration:'1 h 30 min' },
+      { id:'mesa-11', time:'10:30–12:10', room:'Auditorio Hunza 1', kind:'Mesa temática 11', title:'Pedagogías decoloniales, producción colectiva de conocimiento y garantía de derechos', duration:'1 h 40 min', talks:[
+        {title:'Contra el silencio de la guerra: el duelo como práctica pedagógica y política',people:'Julián David Marín Quintero · ESAP'},
+        {title:'Del derecho escrito al saber vivido: restablecimiento de derechos del Virrúa Emberá Chamí',people:'Oscar Zoni Delgado Delgado · ESAP'},
+        {title:'Narrar para resistir: co-creación con mujeres buscadoras de Montes de María',people:'Yurleidis Arregoces Robles · ESAP'},
+        {title:'Del diálogo de saberes a la producción colectiva de conocimiento',people:'Carolina García Sánchez · ESAP'} ]},
+      { id:'mesa-12', time:'14:00–15:20', room:'Paraninfo', kind:'Mesa temática 12', title:'Territorio, reparación colectiva e interculturalidad crítica', duration:'1 h 20 min', talks:[
+        {title:'Cuando la tierra también es víctima',people:'Carolina Canaval Largo · ESAP'},
+        {title:'Cuando arrancan la tierra',people:'Diana Carolina Ordóñez Eraso · ESAP'},
+        {title:'Reparación psicosocial en mujeres víctimas rurales de Tumaco',people:'Linda Berónica Borja Nazareno · ESAP'} ]},
+      { id:'taller-metodo-critico', time:'14:00–15:10', room:'Auditorio Hunza 1', kind:'Taller 2', title:'El método crítico de la ética y el método ético de la crítica', people:'Maestro Rafael Bautista Segales', duration:'1 h 10 min' },
+      { id:'instalacion-mesa-13', time:'15:20–15:25', room:'Paraninfo', kind:'Transición', title:'Instalación de nueva mesa', duration:'5 min' },
+      { id:'mesa-13', time:'15:25–16:45', room:'Paraninfo', kind:'Mesa temática 13', title:'Espacios y materialidades: arte barroco, espacio público y geopolítica global', duration:'1 h 20 min', talks:[
+        {title:'Escenografías de la agencia: el arco toral y la teatralidad barroca en Tópaga',people:'Juan Guillermo Rey Pérez · UPTC'},
+        {title:'Agencia cultural, apropiación del espacio público y formación ciudadana',people:'María Camila Jaimes Cárdenas · Graduada Maestría en Educación UPTC'},
+        {title:'América Latina en la geopolítica de la tecnología',people:'Merly Guanumen Pacheco · UPTC, Pontificia Universidad Javeriana y Universidad Militar Nueva Granada'} ]},
+      { id:'instalacion-mesa-14', time:'15:10–15:15', room:'Auditorio Hunza 1', kind:'Transición', title:'Instalación de mesa', duration:'5 min' },
+      { id:'mesa-14', time:'15:15–16:35', room:'Auditorio Hunza 1', kind:'Mesa temática 14', title:'Literaturas y estéticas desbordadas (3)', duration:'1 h 20 min', talks:[
+        {title:'Libros en llamas: materialidad del texto y literatura en campo expandido',people:'Rafael Climent-Espino · Baylor University'},
+        {title:'Lo diabólico y lo monstruoso en dos novelas sobre la plantación en Colombia',people:'Leonardo Gil Gómez · Universidad Distrital Francisco José de Caldas'},
+        {title:'Blasphemia contra ordinem: el lenguaje disruptivo en el Black Metal',people:'Hernán Javier Pinzón Manrique · Universidad Santo Tomás'} ]},
+      { id:'conferencia-6', time:'17:00–18:00', room:'Paraninfo', kind:'Conferencia 6', title:'La descolonización de la Estética y su importancia para la educación', people:'Dr. Dany Velásquez', duration:'1 h' },
+      { id:'instalacion-mesa-15', time:'16:35–16:40', room:'Auditorio Hunza 1', kind:'Transición', title:'Instalación de nueva mesa', duration:'5 min' },
+      { id:'mesa-15', time:'16:40–18:00', room:'Auditorio Hunza 1', kind:'Mesa temática 15', title:'Enseñanza de idiomas y autorregulación del aprendizaje en un mundo mediado por la virtualidad y la inteligencia artificial', duration:'1 h 20 min', talks:[
+        {title:'Los retos de la educación bilingüe en la era de la globalización',people:'Marco Tulio Carivan Ponare · Investigador independiente'},
+        {title:'A new Era: Virtual Learning in Action',people:'Sharick Fernanda Cubillos Olaya y Ana María Campuzano Falla · Universidad Surcolombiana'},
+        {title:'Autorregulación del aprendizaje mediado por Inteligencia Artificial',people:'Iván Orlando Díaz Bueno · Universidad Autónoma de Bucaramanga'} ]},
+      { id:'concierto-clausura', time:'18:15–19:15', room:'Auditorio por definir', kind:'Clausura', title:'Concierto de clausura', duration:'1 h', note:'Probablemente Teatro Goranchacha, Edificio de Posgrados, primer piso.' }
+    ]
+  }
+];
+---
+
+<BaseLayout title="Programación | XIII Coloquio Internacional en Lenguaje y Cultura" description="Programación interactiva del XIII Coloquio Internacional en Lenguaje y Cultura, 21 al 23 de octubre de 2026 en Tunja.">
+  <Header />
+  <main id="inicio" class="schedule-page">
+    <section class="schedule-hero">
+      <div class="container schedule-hero-inner">
+        <p class="schedule-kicker">21–23 de octubre de 2026 · Tunja, Colombia</p>
+        <h1>Programación <em>interactiva</em></h1>
+        <p>Explora cada actividad y despliega las ponencias, participantes y datos de cada espacio. Los descansos se omiten para mantener una navegación clara.</p>
+        <nav class="day-nav" aria-label="Ir a la programación de cada día">
+          {days.map(day => <a href={`#${day.id}`}>{day.short}</a>)}
+          <a href="#exposicion-fotografica">Exposición</a>
+        </nav>
+      </div>
+    </section>
+
+    <div class="container schedule-content">
+      {days.map(day => (
+        <section id={day.id} class="schedule-day">
+          <header class="day-heading"><span>Programa</span><h2>{day.date}</h2></header>
+          <div class="event-grid">
+            {day.events.map(event => (
+              <article id={event.id} class:list={['event-card', event.talks?.length && 'has-talks']}>
+                <div class="event-meta"><time>{event.time}</time><span>{event.room}</span></div>
+                <p class="event-kind">{event.kind}</p>
+                <h3>{event.title}</h3>
+                {(event.people || event.duration) && <p class="event-people">{event.people}{event.people && event.duration ? ' · ' : ''}{event.duration}</p>}
+                {event.note && <p class="event-note">{event.note}</p>}
+                {event.talks && (
+                  <details>
+                    <summary>Ver {event.talks.length} ponencias</summary>
+                    <ol>{event.talks.map(talk => <li><strong>{talk.title}</strong><span>{talk.people}</span></li>)}</ol>
+                  </details>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section id="exposicion-fotografica" class="exhibition-card">
+        <p class="event-kind">Actividad permanente · 21 al 23 de octubre · 8:00–18:00</p>
+        <h2>Los petroglifos del río Caquetá y la Fuente de la Madre Serpiente</h2>
+        <p>Exposición fotográfica del Maestro Fernando Urbina Rangel.</p>
+        <p><strong>Lugar:</strong> Museo Arqueológico de Tunja, Edificio Central de la UPTC, primer piso.</p>
+      </section>
+      <p class="schedule-note">La programación puede incorporar un recorrido por el campus universitario y otro por el centro histórico de Tunja. Los auditorios de las actividades culturales de cierre están por definir.</p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .schedule-page{background:#f4e7cf;color:#173c31;min-height:100vh;background-image:linear-gradient(rgba(244,231,207,.94),rgba(244,231,207,.94)),url('/images/fondo-secciones.png');background-size:cover;background-attachment:fixed}
+  .schedule-hero{position:relative;overflow:hidden;padding:clamp(5rem,10vw,8rem) 0 4.5rem;background:#213f38;color:#fff}
+  .schedule-hero:before{content:"XIII";position:absolute;right:-.04em;top:-.28em;font:700 clamp(14rem,33vw,34rem)/1 'Cormorant Garamond',serif;color:rgba(238,203,136,.08)}
+  .schedule-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 20%,rgba(211,147,28,.24),transparent 34%),repeating-linear-gradient(118deg,transparent 0 18px,rgba(255,255,255,.018) 18px 19px);pointer-events:none}
+  .schedule-hero-inner{position:relative;z-index:1}
+  .schedule-kicker,.event-kind{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#eaca8e}
+  .schedule-hero h1{max-width:900px;margin:.5rem 0 1rem;font:700 clamp(3.4rem,8vw,7.5rem)/.86 'Cormorant Garamond',serif;letter-spacing:-.045em}
+  .schedule-hero h1 em{color:#eaca8e;font-weight:500}
+  .schedule-hero>div>p:not(.schedule-kicker){max-width:720px;color:#f6eddf;font-size:1.08rem}
+  .day-nav{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:2rem}
+  .day-nav a{padding:.65rem 1rem;border:1px solid rgba(255,255,255,.42);border-radius:999px;font-weight:800;font-size:.88rem;transition:.2s ease}
+  .day-nav a:hover{background:#eaca8e;color:#173c31;border-color:#eaca8e}
+  .schedule-content{padding:4.5rem 0 6rem}
+  .schedule-day{scroll-margin-top:100px;margin-bottom:5rem}
+  .day-heading{display:flex;align-items:end;gap:1rem;padding-bottom:1rem;border-bottom:2px solid #173c31;margin-bottom:1.5rem}
+  .day-heading span{padding:.36rem .7rem;background:#892412;color:#fff;font-weight:800;text-transform:uppercase;font-size:.72rem;letter-spacing:.09em}
+  .day-heading h2{margin:0;font:700 clamp(2rem,4vw,3.4rem)/1 'Cormorant Garamond',serif}
+  .event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+  .event-card{position:relative;scroll-margin-top:105px;background:rgba(255,251,242,.92);border:1px solid rgba(23,60,49,.18);border-top:5px solid #a8442d;padding:1.35rem 1.4rem 1.45rem;box-shadow:0 10px 25px rgba(64,43,25,.07)}
+  .event-card:target{outline:4px solid rgba(211,147,28,.45);animation:targetPulse 1.2s ease}
+  .event-meta{display:flex;justify-content:space-between;gap:1rem;color:#655b4c;font-size:.84rem;font-weight:700}
+  .event-meta time{color:#892412;font-size:1rem}
+  .event-kind{margin:1.1rem 0 .35rem;color:#8c6a43}
+  .event-card h3{font:700 clamp(1.45rem,2.5vw,2rem)/1.05 'Cormorant Garamond',serif;margin:.2rem 0 .65rem;color:#173c31}
+  .event-people,.event-note{margin:.35rem 0;color:#5f5143}
+  .event-note{font-style:italic}
+  details{margin-top:1rem;border-top:1px solid rgba(23,60,49,.15);padding-top:.75rem}
+  summary{cursor:pointer;color:#892412;font-weight:800;list-style:none}
+  summary:after{content:'＋';float:right}
+  details[open] summary:after{content:'−'}
+  details ol{padding-left:1.2rem;margin:1rem 0 0}
+  details li{padding:.75rem .2rem;border-top:1px dotted rgba(23,60,49,.2)}
+  details li span{display:block;color:#655b4c;font-size:.9rem;margin-top:.2rem}
+  .exhibition-card{scroll-margin-top:105px;margin-top:2rem;padding:clamp(2rem,5vw,4rem);background:#892412;color:#fff;position:relative;overflow:hidden}
+  .exhibition-card:before{content:'EXPOSICIÓN';position:absolute;right:-.03em;bottom:-.28em;font:700 clamp(5rem,14vw,11rem)/1 'Cormorant Garamond',serif;color:rgba(255,255,255,.06)}
+  .exhibition-card h2{position:relative;max-width:900px;margin:.5rem 0 1rem;font:700 clamp(2rem,4vw,3.6rem)/1 'Cormorant Garamond',serif}
+  .exhibition-card p{position:relative;max-width:820px}.schedule-note{max-width:860px;margin:2rem auto 0;text-align:center;color:#655b4c;font-size:.92rem}
+  .nav-programacion{color:#892412!important}
+  @keyframes targetPulse{from{transform:translateY(-5px)}to{transform:none}}
+  @media(max-width:760px){.event-grid{grid-template-columns:1fr}.schedule-hero{padding-top:4rem}.day-heading{align-items:flex-start;flex-direction:column}.event-meta{flex-direction:column;gap:.1rem}}
+</style>
