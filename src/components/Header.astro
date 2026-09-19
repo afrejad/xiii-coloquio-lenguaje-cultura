@@ -1,5 +1,62 @@
 <header class="site-header">
   <div class="container site-header-inner">
+    <a class="brand" href="/#inicio" aria-label="Ir al inicio del sitio">
+      <span class="brand-mark">XIII</span>
+
+      <span class="brand-text">
+        <strong>Coloquio Internacional</strong>
+        <span>de Lenguaje y Cultura</span>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Abrir menú de navegación"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="primary-navigation" class="nav" aria-label="Navegación principal">
+      <a href="/#presentacion">Presentación |</a>
+      <a href="/#objetivos">Objetivos |</a>
+      <a href="/#ejes">Ejes temáticos |</a>
+      <a href="/#conferencistas">Conferencistas |</a>
+      <a href="/programacion/" class="nav-programacion">Programación |</a>
+      <a href="/#fechas">Fechas |</a>
+      <a href="/#convocatoria">Convocatoria |</a>
+      <a href="/#inscripciones">Inscripciones</a>
+      
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuButton?.addEventListener("click", () => {
+    const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+
+    menuButton.setAttribute("aria-expanded", String(!isExpanded));
+    nav?.classList.toggle("is-open", !isExpanded);
+    menuButton.classList.toggle("is-active", !isExpanded);
+  });
+
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      menuButton?.classList.remove("is-active");
+      menuButton?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
+<header class="site-header">
+  <div class="container site-header-inner">
     <a class="brand" href="#inicio" aria-label="Ir al inicio del sitio">
       <span class="brand-mark">XIII</span>
 
