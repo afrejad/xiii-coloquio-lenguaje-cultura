@@ -1,4 +1,4 @@
-# XIII Coloquio Internacional de Lenguaje y Cultura
+# XIII Coloquio Internacional en Lenguaje y Cultura
 
 Proyecto base en **Astro** para el sitio web del Coloquio.
 
