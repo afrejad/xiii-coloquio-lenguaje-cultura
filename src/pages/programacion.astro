@@ -61,7 +61,7 @@ const institutions = [
           <header class="day-heading">
             <span class="day-number" aria-hidden="true">{day.day}</span>
             <div><h2 id={`title-${day.id}`}>{day.weekday} <span class="sr-only">{day.day}</span></h2><p>Octubre de 2026</p></div>
-            <img src={`/images/programacion/motivo-${day.day}.svg`} alt="" width="180" height="180" loading="lazy" />
+            
           </header>
           <div class="day-timeline">
             {day.groups.map(group => (
@@ -103,7 +103,7 @@ const institutions = [
           <p class="exhibition-author">{exhibition.people}</p>
           <p>{exhibition.place}<br />{exhibition.address}</p>
         </div>
-        <div class="exhibition-visual"><img src="/images/invitados/invitado-5.jpg" alt="Fernando Urbina Rangel, autor de la exposición" width="520" height="430" loading="lazy" /><img class="exhibition-motif" src="/images/programacion/motivo-21.svg" alt="" width="190" height="190" loading="lazy" /></div>
+        <div class="exhibition-visual"><img src="/images/invitados/invitado-5.jpg" alt="Fernando Urbina Rangel, autor de la exposición" width="520" height="430" loading="lazy" /></div>
       </section>
 
       <section id="agradecimientos" class="program-thanks" aria-labelledby="thanks-title">
