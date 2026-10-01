@@ -2,214 +2,189 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import program from '../data/programacion.json';
 
-type Talk = { title: string; people: string };
-type Event = { id: string; time: string; room: string; kind: string; title: string; people?: string; duration?: string; talks?: Talk[]; note?: string };
-type Day = { id: string; short: string; date: string; events: Event[] };
-
-const days: Day[] = [
-  {
-    id: 'miercoles-21', short: 'Mié. 21', date: 'Miércoles 21 de octubre', events: [
-      { id:'registro-21', time:'7:45–12:00', room:'Paraninfo', kind:'Registro', title:'Apertura de mesa de registro' },
-      { id:'conferencia-inaugural', time:'8:30–10:30', room:'Paraninfo', kind:'Apertura y conferencia inaugural', title:'Lenguajes. El gesto, la palabra y el trazo en la milenaria tradición ancestral amazónica', people:'Maestro Fernando Urbina Rangel', duration:'2 h' },
-      { id:'mesa-1', time:'10:20–12:00', room:'Auditorio Hunza 1', kind:'Mesa temática 1', title:'Literatura escrita por mujeres y viceversa', duration:'1 h 40 min', talks:[
-        {title:'El archivo afectivo en A cabeça do santo de Socorro Acioli', people:'Ayda Elizabeth Blanco Estupiñán · UPTC'},
-        {title:'Mujer y arte, entre la palabra compartida y la desobediencia', people:'Ángela María Díaz Martínez · Colegio Nuestra Señora de Fátima, Tunja'},
-        {title:'El retrato de la mujer en Rosario Castellanos y Marvel Moreno', people:'Yaniana Castro Rátiva · Instituto Caro y Cuervo'},
-        {title:'Lecturas feministas de La vorágine y Noche negra: una aproximación comparativa', people:'Nasli Giomara Farfán Pérez · Universidad Surcolombiana'} ]},
-      { id:'conferencia-2', time:'10:45–12:00', room:'Paraninfo', kind:'Conferencia 2', title:'Historias Globales desde el Sur, escapando de la jaula historiográfica colonial', people:'Dr. Jorge Romero Losacco', duration:'1 h 15 min' },
-      { id:'panel-narrativas-decoloniales', time:'14:00–16:00', room:'Paraninfo', kind:'Panel', title:'Narrativas decoloniales: literatura, medios y prácticas artísticas en América Latina', people:'Rogério Lobo Sáber, Ángela Chaverra y Dany Velásquez', duration:'2 h' },
-      { id:'mesa-2', time:'14:00–16:00', room:'Auditorio Hunza 1', kind:'Mesa temática 2', title:'¿Puede la investigación ser una ceremonia? Caminando colectivamente una praxis relacional y decolonial desde Knowledge in Action', duration:'2 h', talks:[
-        {title:'¿Puede la investigación ser una ceremonia? La investigación como relación, responsabilidad y reciprocidad',people:'Nancy Emilce Carvajal Medina · UPTC'},
-        {title:'Caminar juntxs: construir comunidad investigativa. Pertenencia, colaboración y aprendizaje colectivo en Knowledge in Action',people:'Juliana Estefanía Barrote Ormaza · UPTC'},
-        {title:'Transformarse investigando. Devenir investigadores relacionales y decoloniales',people:'Silvia Daniela Sierra Vargas · UPTC'},
-        {title:'Más allá del método. Descolonizar las prácticas de producción de conocimiento',people:'Maribel Rojas Fernández · UPTC'},
-        {title:'Cierre colectivo. Hacia futuros posibles: investigación, ceremonia y praxis decolonial',people:'Todo el grupo'} ]},
-      { id:'conferencia-3', time:'16:15–17:30', room:'Paraninfo', kind:'Conferencia 3', title:'De la violencia escolar a la pedagogía de la liberación en el aula: apuestas desde el feminismo y la educación popular', people:'Dra. Alicia Hopkins', duration:'1 h 15 min' },
-      { id:'mesa-3', time:'16:15–17:55', room:'Auditorio Hunza 1', kind:'Mesa temática 3', title:'Interculturalidad en las áreas de salud y educación', duration:'1 h 40 min', talks:[
-        {title:'Tejiendo saberes en la partería intercultural: identidad mestiza, sabiduría del cuerpo y práctica decolonial',people:'Sara Barbosa · Fundación Mujeres Bachué'},
-        {title:'La interculturalidad, un desafío de la atención en salud en Colombia',people:'Jonathan García Jiménez · Pontificia Universidad Javeriana y Hospital Universitario Nacional de Colombia'},
-        {title:'¿De qué hablamos cuando hablamos sobre interculturalidad? Una mirada a tres universidades en Colombia',people:'Jhon Eduardo Mosquera Pérez, Lisseth Rojas Barreto y Alexander Ramírez Espinosa · UPTC'},
-        {title:'Interculturalidad en el currículo de idiomas en Colombia: realidades y desafíos',people:'Iván Ricardo Miranda Montenegro · UPTC'} ]},
-      { id:'socializacion-beca', time:'17:30–18:00', room:'Paraninfo', kind:'Socialización de beca', title:'Coordenadas de lo efímero: cartografía viva de la dramaturgia tunjana. Beca de investigación teatral', people:'Doctoranda Viviana Alba', duration:'30 min' },
-      { id:'obra-teatro', time:'18:15–19:15', room:'Auditorio por definir', kind:'Actividad cultural', title:'Obra de teatro', duration:'1 h', note:'Probablemente Teatro Goranchacha, Edificio de Posgrados, primer piso.' }
-    ]
-  },
-  {
-    id:'jueves-22', short:'Jue. 22', date:'Jueves 22 de octubre', events:[
-      { id:'registro-22', time:'8:00–12:00', room:'Paraninfo', kind:'Registro', title:'Mesa de registro' },
-      { id:'mesa-4', time:'8:00–9:20', room:'Paraninfo', kind:'Mesa temática 4', title:'Enseñanza de idiomas y autorregulación del aprendizaje en un mundo mediado por la virtualidad y la inteligencia artificial', duration:'1 h 20 min', talks:[
-         {title:'Los retos de la educación bilingüe en la era de la globalización',people:'Marco Tulio Carivan Ponare · Investigador independiente'},
-        {title:'A new Era: Virtual Learning in Action for students at Universidad Surcolombiana',people:'Sharick Fernanda Cubillos Olaya y Ana María Campuzano Falla · Universidad Surcolombiana'},
-        {title:'Autorregulación del aprendizaje mediado por Inteligencia Artificial en líderes técnicos de TI del sector utilities en Colombia',people:'Iván Orlando Díaz Bueno · Universidad Autónoma de Bucaramanga'}]},
-      { id:'mesa-5', time:'8:00–10:25', room:'Auditorio Hunza 1', kind:'Mesa temática 5', title:'Lengua, educación y territorio: investigación con comunidades indígenas', duration:'2 h', talks:[
-        {title:'Retos de la educación propia para la enseñanza de la diversidad étnica y la interculturalidad en la formación de maestros y maestras de Ciencias Sociales en la UPTC',people:'Álvaro Ricardo Gómez Murillo · UPTC'},
-        {title:'Jíbibɨrɨ úai: las prácticas del mambeadero como metodología para la descolonización de la enseñanza y el aprendizaje',people:'Maribel Berrío Moncada · Universidad de Antioquia'},
-        {title:'Cuando hablar español resulta más fácil: ecología de presiones y desplazamiento lingüístico del kamënts̈á',people:'Jaime Alejandro Barón Sotto · UPTC'},
-        {title:'La investigación desde adentro: documentación y revitalización lingüística desde la pertenencia comunitaria con pueblos indígenas de Colombia',people:'Andersson David Causaya Cerón · Instituto Caro y Cuervo'},
-        {title:'De la palabra heredada al conocimiento escrito: tensiones entre oralidad y escritura en comunidades indígenas y afrocolombianas',people:'Jhina Luz Gómez Villera · Universidad INCCA de Colombia'},
-        {title:'Relaciones con el agua y traducción colonial: muiscas y castellanos en el altiplano cundiboyacense durante el siglo XVI',people:'Luis Alejandro Cruz González · UPTC'} ]},
-      { id:'conferencia-4', time:'9:30–11:00', room:'Paraninfo', kind:'Conferencia 4', title:'Epistemología descolonial', people:'Maestro Rafael Bautista Segales', duration:'1 h 30 min' },
-      
-      { id:'mesa-6', time:'10:40–12:00', room:'Auditorio Hunza 1', kind:'Mesa temática 6', title:'Pedagogías decoloniales y desafíos contemporáneos', duration:'1 h 20 min', talks:[
-        {title:'Pedagogías de la re-existencia: Estado del arte sobre la producción investigativa de la Universidad Distrital Francisco José de Caldas',people:'Geraldine Sierra Lozano · Universidad Distrital Francisco José de Caldas'},
-        {title:'Cuerpos en suspensión y polifonías equitativas: cazando imaginarios nocivos de género',people:'Ana Angulo, Paula González y Yisela Pulido · Colectiva Leu y Teu'},
-        {title:'Decolonizar la investigación: una reflexión sobre la producción de conocimiento',people:'Dubán Santiago López Suárez · UPTC'} ]},
-      { id:'conferencia-5', time:'11:10–12:10', room:'Paraninfo', kind:'Conferencia 5', title:'Descolonizando el ser: sentipensando y caminando la palabra', people:'Nancy Carvajal', duration:'1 h' },
-        { id:'taller-1', time:'14:00–15:15', room:'Paraninfo', kind:'Taller 1', title:'Educación popular en el aula: dinámicas y herramientas para docentes', people:'Dra. Alicia Hopkins', duration:'1 h 15 min' },
-      { id:'mesa-7', time:'14:00–15:20', room:'Auditorio Hunza 1', kind:'Mesa temática 7', title:'Lo que se produce en el margen: forma, raíz y territorio en la narrativa latinoamericana', duration:'1 h 20 min', talks:[
-        {title:"Escrituras ch'ixi de mediados de siglo: exclusión, forma y colonialismo interno en la narrativa latinoamericana (1949-1963)",people:'Hernán Darío Hernández Quintero · Universidad Tecnológica de Pereira'},
-        {title:'Literatura afrocaribeña: una ventana para redescubrir la «tercera raíz» de la identidad hispanoamericana según Luz María Martínez Montiel',people:'Carlos Andrés Vélez Peláez · Universidad Tecnológica de Pereira'},
-        {title:'La experiencia del paisaje selvático y la transformación del sujeto en Las niñas del naranjel de Gabriela Cabezón Cámara',people:'Jackeline Parra Londoño · Universidad Tecnológica de Pereira'} ]},
-      { id:'taller-historias-globales', time:'15:30–16:45', room:'Paraninfo', kind:'Taller 2', title:'Semiosis decolonial: Hacia una crítica material de la «postverdad»', people:'Dr. Jorge Romero Losacco', duration:'1 h 15 min' },
-      { id:'conferencia-6', time:'15:35–16:35', room:'Auditorio Hunza 1', kind:'Conferencia 6', title:'Leer de otro modo: literatura y la invención de nuevas pedagogías', people:'Dr. Rogério Lobo Sáber', duration:'1 h' },
-      { id:'instalacion-mesa-8', time:'16:35–16:40', room:'Auditorio Hunza 1', kind:'Transición', title:'Instalación de mesa 8', duration:'5 min' },
-      { id:'cuando-el-cuerpo-habla', time:'16:45–18:00', room:'Paraninfo', kind:'Performance / conferencia-performance', title:'Cuando el cuerpo habla', people:'Dra. Ángela Chaverra', duration:'1 h 15 min', note:'Formato por definir.' },
-      { id:'mesa-8', time:'16:40–18:00', room:'Auditorio Hunza 1', kind:'Mesa temática 8', title:'Relaciones entre lengua, identidad y territorio', duration:'1 h 20 min', talks:[
-        {title:'Variación léxico-semántica y paralingüística en el argot del gremio transportador de carga pesada de la ciudad de Duitama',people:'Cristian Felipe Blanco Martínez · UPTC'},
-        {title:'La identidad regional en el moño: prácticas discursivas de la copla tradicional desde una perspectiva sociolingüística',people:'María José Nieves Herreño · UPTC'},
-        {title:'Implicaturas del adjetivo calificativo en el habla de Tunja desde la Teoría de la Relevancia',people:'Jhoandry Jholima López García · UPTC'} ]}
-    ]
-  },
-  {
-    id:'viernes-23', short:'Vie. 23', date:'Viernes 23 de octubre', events:[
-      { id:'registro-23', time:'8:00–12:00', room:'Paraninfo', kind:'Registro', title:'Mesa de registro' },
-      { id:'mesa-9', time:'8:15–10:15', room:'Paraninfo', kind:'Mesa temática 9', title:'Narrativas al margen: contextos educativos, estéticas y territorios', duration:'2 h', talks:[
-        {title:'Narrativas pedagógicas de maestras rurales afrodescendientes en los Montes de María: prácticas discursivas de memoria, identidad y construcción territorial de paz',people:'Berlinda Isabel Cassiani Molina · UPTC'},
-        {title:'Habitar entre lenguas: experiencias narradas por estudiantes indígenas universitarios del Cauca',people:'Maribel Rojas Fernández · UPTC'},
-        {title:'Corporalidades campesinas y prácticas artísticas',people:'Luis Yecid Bayona · UPTC'},
-        {title:'Sentidos de la experiencia docente en la puesta en práctica del modelo educativo propio Shama Zhigui: narrativas pedagógicas de un grupo de docentes de la Institución Educativa Técnica Kanzasinamke de la comunidad Tezhumke del pueblo Wiwa',people:'Gabriel Ángel Galiano Rangel · UPTC'},
-        {title:'La dimensión estética en las prácticas del decir de personas habitantes de calle en condición de locura de la comuna 19 de Santiago de Cali',people:'Ricardo Abdul Canizales Romero · UPTC'} ]},
-      { id:'mesa-10', time:'8:15–10:15', room:'Auditorio Hunza 1', kind:'Mesa temática 10', title:'Mujeres campesinas, educación rural y género', duration:'2 h', talks:[
-        {title:'Voces de mujeres rurales: narrativas que exploran las prácticas de cuidado y las normas basadas en el género en la comunidad de Toca, Boyacá',people:'Michell Dayana Vanegas Becerra · UPTC'},
-        {title:'El cuerpo-mujer rural como territorio epistémico: pedagogías encarnadas de resistencia en escuelas rurales multigrado',people:'Cristian Camilo Reyes Galeano y Shari Daniela Ramírez Salazar · Universidad del Quindío'},
-        {title:'Sembrando voces: leer, escribir y hablar desde la raíz',people:'Martha Isabel Gómez Gómez, María Trinidad Cabanzo Cuadrado y Ruth Julieth Muñoz Pino · Universidad INCCA'},
-        {title:'Florecer juntas: educación popular con enfoque de género para fortalecer la autonomía y el emprendimiento de mujeres rurales en Anapoima – Cundinamarca',people:'Laura Valentina Barragán Sierra, Elkin Durán Mancipe y Fabio Edisson Morera Forero · Universidad Santiago de Cali'},
-        {title:'Fortalecimiento de la comprensión inferencial y crítica mediante aprendizaje colaborativo en un aula multigrado rural',people:'Sandra Rocío Vargas Amézquita · UPTC'} ]},
-      { id:'conversatorio-multilinguismo', time:'10:30–12:00', room:'Paraninfo', kind:'Conversatorio abierto', title:'Multilingüismo, derechos lingüísticos y política pública: debates en torno a la Ley 2630 de 2026', people:'Moderan Nancy Emilce Carvajal Medina y Andersson David Causaya Cerón, Red del Activismo Lingüístico en Colombia', duration:'1 h 30 min' },
-      { id:'mesa-11', time:'10:30–12:10', room:'Auditorio Hunza 1', kind:'Mesa temática 11', title:'Pedagogías decoloniales, producción colectiva de conocimiento y garantía de derechos', duration:'1 h 40 min', talks:[
-        {title:'Contra el silencio de la guerra: el duelo como práctica pedagógica y política',people:'Julián David Marín Quintero · ESAP'},
-        {title:'Del derecho escrito al saber vivido: traducción pedagógica y formación comunitaria en el restablecimiento de derechos del Virrúa Emberá Chamí',people:'Oscar Zoni Delgado Delgado · ESAP'},
-        {title:'Narrar para resistir: co-creación de conocimiento con mujeres buscadoras de Montes de María desde la memoria territorial',people:'Yurleidis Arregoces Robles · ESAP'},
-        {title:'Del diálogo de saberes a la producción colectiva de conocimiento: una reflexión sobre la construcción de capacidades para la acción colectiva',people:'Carolina García Sánchez · ESAP'} ]},
-      { id:'mesa-12', time:'14:00–15:20', room:'Paraninfo', kind:'Mesa temática 12', title:'Territorio, reparación colectiva e interculturalidad crítica', duration:'1 h 20 min', talks:[
-        {title:'Cuando la tierra también es víctima: desafíos de la reparación colectiva en territorios indígenas',people:'Carolina Canaval Largo · ESAP'},
-        {title:'Cuando arrancan la tierra. Una lectura decolonial sobre territorio e identidad en contextos de desplazamiento forzado',people:'Diana Carolina Ordóñez Eraso · ESAP'},
-        {title:'Implementación de la reparación psicosocial en mujeres víctimas rurales de Tumaco (Nariño)',people:'Linda Berónica Borja Nazareno · ESAP'} ]},
-      { id:'taller-metodo-critico', time:'14:00–15:10', room:'Auditorio Hunza 1', kind:'Taller 2', title:'El método crítico de la ética y el método ético de la crítica', people:'Maestro Rafael Bautista Segales', duration:'1 h 10 min' },
-      { id:'instalacion-mesa-13', time:'15:20–15:25', room:'Paraninfo', kind:'Transición', title:'Instalación de mesa 13', duration:'5 min' },
-      { id:'mesa-13', time:'15:25–16:45', room:'Paraninfo', kind:'Mesa temática 13', title:'Espacios y materialidades: arte barroco, espacio público y geopolítica global', duration:'1 h 20 min', talks:[
-        {title:'Escenografías de la agencia: El arco toral y la teatralidad barroca como dispositivos de negociación cultural en el Templo Doctrinero de Tópaga',people:'Juan Guillermo Rey Pérez · UPTC'},
-        {title:'Agencia cultural, apropiación del espacio público y formación ciudadana: Prácticas de resistencia en Tunja',people:'María Camila Jaimes Cárdenas · Graduada Maestría en Educación UPTC'},
-        {title:'América Latina en la geopolítica de la tecnología: datos y minerales estratégicos en las nuevas formas del neocolonialismo estadounidense',people:'Merly Guanumen Pacheco · UPTC, Pontificia Universidad Javeriana y Universidad Militar Nueva Granada'} ]},
-      { id:'instalacion-mesa-14', time:'15:10–15:15', room:'Auditorio Hunza 1', kind:'Transición', title:'Instalación de mesa', duration:'5 min' },
-      { id:'mesa-14', time:'15:15–16:15', room:'Auditorio Hunza 1', kind:'Mesa temática 14', title:'Literaturas y estéticas desbordadas (2)', duration:'1 h', talks:[
-        {title:'Lo diabólico y lo monstruoso en dos novelas sobre la plantación en Colombia',people:'Leonardo Gil Gómez · Universidad Distrital Francisco José de Caldas'},
-        {title:'Blasphemia contra ordinem: el lenguaje disruptivo en el Black Metal',people:'Hernán Javier Pinzón Manrique · Universidad Santo Tomás'} ]},
-      { id:'conferencia-7', time:'17:00–18:00', room:'Paraninfo', kind:'Conferencia 7', title:'La descolonización de la Estética y su importancia para la educación', people:'Dr. Dany Velásquez', duration:'1 h' },
-      { id:'instalacion-mesa-15', time:'16:35–16:40', room:'Auditorio Hunza 1', kind:'Transición', title:'Instalación de nueva mesa', duration:'5 min' },
-      { id:'mesa-15', time:'16:20–18:00', room:'Auditorio Hunza 1', kind:'Mesa temática 15', title:'Semiótica y análisis crítico del discurso', duration:'1 h 40 min', talks:[
-      {title:'Imágenes que reclaman memoria: videoclip de protesta juvenil, cultura visual y estallido social colombiano',people:'Jazmín Adriana Rubiano Rubiano · UPTC'},
-        {title:'Minga, territorio y voz indígena en la prensa digital colombiana. Análisis crítico del discurso de representaciones mediáticas, 2019-2026',people:'Harvey Humberto Merchán Cante · Universidad Distrital Francisco José de Caldas'},
-        {title:'Análisis multimodal en las caricaturas de Matador relacionadas con el COVID-19 en Colombia, representaciones de una pandemia',people:'Deisy Lorena Díaz Ávila · UPTC'},
-        {title:'Dinero colombiano: tensión polifónica del discurso de nación',people:'Raúl Firacative-Ruiz · UPTC'}  
-       ]},
-      { id:'concierto-clausura', time:'18:15–19:15', room:'Auditorio por definir', kind:'Clausura', title:'Concierto de clausura', duration:'1 h', note:'Probablemente Teatro Goranchacha, Edificio de Posgrados, primer piso.' }
-    ]
-  }
+const { days, exhibition } = program;
+const institutions = [
+  { src: 'uptc.svg', title: 'Universidad Pedagógica y Tecnológica de Colombia', role: 'Organiza' },
+  { src: 'doctorado.svg', title: 'Doctorado en Lenguaje y Cultura', role: 'Organiza' },
+  { src: 'ML.png', title: 'Maestría en Lingüística', role: 'Organiza' },
+  { src: 'facultad.png', title: 'Facultad de Ciencias de la Educación · UPTC', role: 'Acompañamiento y apoyo' },
+  { src: 'banco-republica.png', title: 'Banco de la República', role: 'Acompañamiento y apoyo' },
 ];
 ---
 
-<BaseLayout title="Programación | XIII Coloquio Internacional en Lenguaje y Cultura" description="Programación interactiva del XIII Coloquio Internacional en Lenguaje y Cultura, 21 al 23 de octubre de 2026 en Tunja.">
+<BaseLayout title="Programación | XIII Coloquio Internacional en Lenguaje y Cultura" description="Programa completo del XIII Coloquio: conferencias, 15 mesas temáticas, talleres, teatro, exposición y concierto. 21, 22 y 23 de octubre de 2026, UPTC, Tunja.">
   <Header />
   <main id="inicio" class="schedule-page">
-    <section class="schedule-hero">
-      <div class="container schedule-hero-inner">
-        <p class="schedule-kicker">21–23 de octubre de 2026 · Tunja, Colombia</p>
-        <h1>Programación <em>interactiva</em></h1>
-        <p>Explora cada actividad y despliega las ponencias, participantes y datos de cada espacio. </p>
-        <nav class="day-nav" aria-label="Ir a la programación de cada día">
-          {days.map(day => <a href={`#${day.id}`}>{day.short}</a>)}
-          <a href="#exposicion-fotografica">Exposición</a>
-        </nav>
+    <section class="program-cover" aria-labelledby="program-title">
+      <div class="container cover-grid">
+        <div class="cover-copy">
+          <img class="cover-university" src="/images/programacion/uptc-acreditacion.png" alt="UPTC · Acreditación institucional de alta calidad multicampus" width="200" height="62" />
+          <div class="cover-identity" aria-label="XIII Coloquio Internacional en Lenguaje y Cultura">
+            <span class="cover-edition" aria-hidden="true">XIII</span>
+            <span class="cover-name" aria-hidden="true">Coloquio<br />Internacional<br />en Lenguaje<br />y Cultura</span>
+          </div>
+          <h1 id="program-title">Programación</h1>
+          <p class="cover-theme">Pedagogías críticas <span>Voces desde la interculturalidad</span></p>
+          <p class="cover-date">21 / 22 / 23 <span>octubre · 2026</span></p>
+          <p class="cover-location">UPTC · Sede central · Tunja, Colombia</p>
+          <div class="cover-actions">
+            <a class="program-button" href="#agenda">Consultar la agenda <span aria-hidden="true">↓</span></a>
+            <a class="program-link" href={program.canvaViewUrl} target="_blank" rel="noopener noreferrer">Ver guía ilustrada en Canva <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <img class="cover-art" src="/images/programacion/collage.webp" width="620" height="734" alt="Collage del Coloquio: voces, territorios, lectura y saberes compartidos" fetchpriority="high" />
       </div>
     </section>
 
-    <div class="container schedule-content">
+    <section class="container program-welcome" aria-labelledby="welcome-title">
+      <div><span class="eyebrow-text">Presentación</span><h2 id="welcome-title">Voces que se encuentran,<br /><em>saberes que dialogan</em></h2></div>
+      <div class="welcome-text">{program.intro.map(text => <p>{text}</p>)}</div>
+    </section>
+
+    <nav class="program-nav" aria-label="Recorrer la programación">
+      <div class="container program-nav-inner">
+        {days.map(day => <a href={`#${day.id}`} class="day-tab" style={`--day-color:${day.accent}`}><span>{day.weekday}</span><strong>{day.day}</strong></a>)}
+        <a href="#exposicion-fotografica" class="extra-tab">Exposición</a>
+        <a href="#agradecimientos" class="extra-tab">Instituciones</a>
+      </div>
+    </nav>
+
+    <div id="agenda" class="container schedule-content">
+      <div class="reading-guide">
+        <p>Elige el día y sigue las horas de inicio. Las actividades simultáneas comparten franja.<br /><span>Horarios en formato de 24 horas. Despliega cada mesa para consultar sus ponencias.</span></p>
+        <button id="toggle-talks" class="text-button" type="button" aria-expanded="false" hidden>Desplegar todas las ponencias <span aria-hidden="true">+</span></button>
+      </div>
       {days.map(day => (
-        <section id={day.id} class="schedule-day">
-          <header class="day-heading"><span>Programa</span><h2>{day.date}</h2></header>
-          <div class="event-grid">
-            {day.events.map(event => (
-              <article id={event.id} class:list={['event-card', event.talks?.length && 'has-talks']}>
-                <div class="event-meta"><time>{event.time}</time><span>{event.room}</span></div>
-                <p class="event-kind">{event.kind}</p>
-                <h3>{event.title}</h3>
-                {(event.people || event.duration) && <p class="event-people">{event.people}{event.people && event.duration ? ' · ' : ''}{event.duration}</p>}
-                {event.note && <p class="event-note">{event.note}</p>}
-                {event.talks && (
-                  <details>
-                    <summary>Ver {event.talks.length} ponencias</summary>
-                    <ol>{event.talks.map(talk => <li><strong>{talk.title}</strong><span>{talk.people}</span></li>)}</ol>
-                  </details>
-                )}
-              </article>
+        <section id={day.id} class="schedule-day" style={`--day-color:${day.accent}`} aria-labelledby={`title-${day.id}`}>
+          <header class="day-heading">
+            <span class="day-number" aria-hidden="true">{day.day}</span>
+            <div><h2 id={`title-${day.id}`}>{day.weekday} <span class="sr-only">{day.day}</span></h2><p>Octubre de 2026</p></div>
+            <img src={`/images/programacion/motivo-${day.day}.svg`} alt="" width="180" height="180" loading="lazy" />
+          </header>
+          <div class="day-timeline">
+            {day.groups.map(group => (
+              <div class="time-group">
+                <div class="time-rail"><time datetime={`2026-10-${day.day}T${group.start}:00-05:00`}>{group.start}</time>{group.events.filter(event => event.type !== 'logistics').length > 1 && <span>En simultáneo</span>}</div>
+                <div class:list={['time-events', group.events.filter(event => event.type !== 'logistics').length > 1 && 'parallel-events']}>
+                  {group.events.map(event => event.type === 'logistics' ? (
+                    <article id={event.id} class="logistics-entry"><time>{event.time}</time><div><strong>{event.title}</strong><span>{event.rooms.join(' y ')}</span></div></article>
+                  ) : (
+                    <article id={event.id} class:list={['event-card', event.type === 'mesa' && 'has-talks']}>
+                      <div class="event-meta"><time>{event.time}</time><span>{event.rooms.join(' y ')}</span></div>
+                      <p class="event-kind">{event.kind}</p>
+                      {'portraits' in event && event.portraits && <div class:list={['portrait-row', event.portraits.length > 1 && 'portrait-group']}>{event.portraits.map(portrait => <img src={portrait.src} alt={`Retrato de ${portrait.name}`} width="100" height="116" loading="lazy" />)}</div>}
+                      <h3><a href={`#${event.id}`}>{event.title}</a></h3>
+                      {'people' in event && event.people && <p class="event-people">{event.people}</p>}
+                      {'note' in event && event.note && <p class="event-note">{event.note}</p>}
+                      {'talks' in event && event.talks && (
+                        <details class="talk-details">
+                          <summary>Ver {event.talks.length} {event.id === 'mesa-2' ? 'intervenciones' : 'ponencias'}<span class="detail-symbol" aria-hidden="true"></span></summary>
+                          <ol>{event.talks.map(talk => <li><h4>{talk.title}</h4><p class="talk-author">{talk.author}</p>{talk.affiliation && <p class="talk-affiliation">{talk.affiliation}</p>}</li>)}</ol>
+                        </details>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
+          <a class="day-back" href="#agenda">Volver a los días <span aria-hidden="true">↑</span></a>
         </section>
       ))}
 
-      <section id="exposicion-fotografica" class="exhibition-card">
-        <p class="event-kind">Actividad permanente · 21 al 23 de octubre · 8:00–18:00</p>
-        <h2>Los petroglifos del río Caquetá y la Fuente de la Madre Serpiente</h2>
-        <p>Exposición fotográfica del Maestro Fernando Urbina Rangel.</p>
-        <p><strong>Lugar:</strong> Museo Arqueológico de Tunja, Edificio Central de la UPTC, primer piso.</p>
+      <section id={exhibition.id} class="exhibition" aria-labelledby="exhibition-title">
+        <div class="exhibition-copy">
+          <p class="eyebrow-text">Durante el Coloquio · 21–23 de octubre</p>
+          <p class="exhibition-time">{exhibition.time}</p>
+          <h2 id="exhibition-title">Exposición<br /><em>fotográfica</em></h2>
+          <h3>{exhibition.title}</h3>
+          <p class="exhibition-author">{exhibition.people}</p>
+          <p>{exhibition.place}<br />{exhibition.address}</p>
+        </div>
+        <div class="exhibition-visual"><img src="/images/invitados/invitado-5.jpg" alt="Fernando Urbina Rangel, autor de la exposición" width="520" height="430" loading="lazy" /><img class="exhibition-motif" src="/images/programacion/motivo-21.svg" alt="" width="190" height="190" loading="lazy" /></div>
       </section>
-      <p class="schedule-note">La programación puede incorporar un recorrido por el campus universitario y otro por el centro histórico de Tunja. Los auditorios de las actividades culturales de cierre están por definir.</p>
+
+      <section id="agradecimientos" class="program-thanks" aria-labelledby="thanks-title">
+        <p class="eyebrow-text">Hacer posible el encuentro</p>
+        <h2 id="thanks-title">Gracias por tejer <em>este diálogo</em></h2>
+        <p class="thanks-intro">{program.thanks}</p>
+        <div class="institutions">{institutions.map(institution => <figure><span>{institution.role}</span><div><img src={`/images/logos/${institution.src}`} alt="" loading="lazy" /></div><figcaption>{institution.title}</figcaption></figure>)}</div>
+      </section>
+      <div class="program-end"><p>Pedagogías críticas:<br /><strong>voces desde la interculturalidad</strong></p><a href={program.canvaViewUrl} target="_blank" rel="noopener noreferrer">Consultar la guía ilustrada <span aria-hidden="true">↗</span></a></div>
     </div>
   </main>
   <Footer />
 </BaseLayout>
 
+<script>
+  const allTalks = [...document.querySelectorAll<HTMLDetailsElement>('.talk-details')];
+  const toggle = document.querySelector<HTMLButtonElement>('#toggle-talks');
+  function syncToggle() {
+    const expanded = allTalks.length > 0 && allTalks.every(detail => detail.open);
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.textContent = expanded ? 'Plegar todas las ponencias −' : 'Desplegar todas las ponencias +';
+    }
+  }
+  if (toggle) {
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+      const open = !allTalks.every(detail => detail.open);
+      allTalks.forEach(detail => { detail.open = open; });
+      syncToggle();
+    });
+    allTalks.forEach(detail => detail.addEventListener('toggle', syncToggle));
+  }
+  function revealLinkedActivity() {
+    let id: string;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    if (!id) return;
+    const activity = document.getElementById(id);
+    const detail = activity?.querySelector<HTMLDetailsElement>('.talk-details');
+    if (detail) {
+      detail.open = true;
+      syncToggle();
+      requestAnimationFrame(() => activity?.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    }
+  }
+  revealLinkedActivity();
+  window.addEventListener('hashchange', revealLinkedActivity);
+  const header = document.querySelector('.site-header');
+  if (header) {
+    new ResizeObserver(() => {
+      document.documentElement.style.setProperty('--site-header-height', `${header.getBoundingClientRect().height}px`);
+    }).observe(header);
+  }
+  const tabs = document.querySelectorAll<HTMLAnchorElement>('.day-tab');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      tabs.forEach(tab => {
+        if (tab.hash === `#${entry.target.id}`) tab.setAttribute('aria-current', 'date');
+        else tab.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin: '-22% 0px -64% 0px' });
+  document.querySelectorAll('.schedule-day').forEach(day => observer.observe(day));
+</script>
+
 <style>
-  .schedule-page{background:#f4e7cf;color:#173c31;min-height:100vh;background-image:linear-gradient(rgba(244,231,207,.94),rgba(244,231,207,.94)),url('/images/fondo-secciones.png');background-size:cover;background-attachment:fixed}
-  .schedule-hero{position:relative;overflow:hidden;padding:clamp(5rem,10vw,8rem) 0 4.5rem;background:#213f38;color:#fff}
-  .schedule-hero:before{content:"XIII";position:absolute;right:-.04em;top:-.28em;font:700 clamp(14rem,33vw,34rem)/1 'Cormorant Garamond',serif;color:rgba(238,203,136,.08)}
-  .schedule-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 20%,rgba(211,147,28,.24),transparent 34%),repeating-linear-gradient(118deg,transparent 0 18px,rgba(255,255,255,.018) 18px 19px);pointer-events:none}
-  .schedule-hero-inner{position:relative;z-index:1}
-  .schedule-kicker,.event-kind{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#eaca8e}
-  .schedule-hero h1{max-width:900px;margin:.5rem 0 1rem;font:700 clamp(3.4rem,8vw,7.5rem)/.86 'Cormorant Garamond',serif;letter-spacing:-.045em}
-  .schedule-hero h1 em{color:#eaca8e;font-weight:500}
-  .schedule-hero>div>p:not(.schedule-kicker){max-width:720px;color:#f6eddf;font-size:1.08rem}
-  .day-nav{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:2rem}
-  .day-nav a{padding:.65rem 1rem;border:1px solid rgba(255,255,255,.42);border-radius:999px;font-weight:800;font-size:.88rem;transition:.2s ease}
-  .day-nav a:hover{background:#eaca8e;color:#173c31;border-color:#eaca8e}
-  .schedule-content{padding:4.5rem 0 6rem}
-  .schedule-day{scroll-margin-top:100px;margin-bottom:5rem}
-  .day-heading{display:flex;align-items:end;gap:1rem;padding-bottom:1rem;border-bottom:2px solid #173c31;margin-bottom:1.5rem}
-  .day-heading span{padding:.36rem .7rem;background:#892412;color:#fff;font-weight:800;text-transform:uppercase;font-size:.72rem;letter-spacing:.09em}
-  .day-heading h2{margin:0;font:700 clamp(2rem,4vw,3.4rem)/1 'Cormorant Garamond',serif}
-  .event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-  .event-card{position:relative;scroll-margin-top:105px;background:rgba(255,251,242,.92);border:1px solid rgba(23,60,49,.18);border-top:5px solid #a8442d;padding:1.35rem 1.4rem 1.45rem;box-shadow:0 10px 25px rgba(64,43,25,.07)}
-  .event-card:target{outline:4px solid rgba(211,147,28,.45);animation:targetPulse 1.2s ease}
-  .event-meta{display:flex;justify-content:space-between;gap:1rem;color:#655b4c;font-size:.84rem;font-weight:700}
-  .event-meta time{color:#892412;font-size:1rem}
-  .event-kind{margin:1.1rem 0 .35rem;color:#8c6a43}
-  .event-card h3{font:700 clamp(1.45rem,2.5vw,2rem)/1.05 'Cormorant Garamond',serif;margin:.2rem 0 .65rem;color:#173c31}
-  .event-people,.event-note{margin:.35rem 0;color:#5f5143}
-  .event-note{font-style:italic}
-  details{margin-top:1rem;border-top:1px solid rgba(23,60,49,.15);padding-top:.75rem}
-  summary{cursor:pointer;color:#892412;font-weight:800;list-style:none}
-  summary:after{content:'＋';float:right}
-  details[open] summary:after{content:'−'}
-  details ol{padding-left:1.2rem;margin:1rem 0 0}
-  details li{padding:.75rem .2rem;border-top:1px dotted rgba(23,60,49,.2)}
-  details li span{display:block;color:#655b4c;font-size:.9rem;margin-top:.2rem}
-  .exhibition-card{scroll-margin-top:105px;margin-top:2rem;padding:clamp(2rem,5vw,4rem);background:#892412;color:#fff;position:relative;overflow:hidden}
-  .exhibition-card:before{content:'EXPOSICIÓN';position:absolute;right:-.03em;bottom:-.28em;font:700 clamp(5rem,14vw,11rem)/1 'Cormorant Garamond',serif;color:rgba(255,255,255,.06)}
-  .exhibition-card h2{position:relative;max-width:900px;margin:.5rem 0 1rem;font:700 clamp(2rem,4vw,3.6rem)/1 'Cormorant Garamond',serif}
-  .exhibition-card p{position:relative;max-width:820px}.schedule-note{max-width:860px;margin:2rem auto 0;text-align:center;color:#655b4c;font-size:.92rem}
-  .nav-programacion{color:#892412!important}
-  @keyframes targetPulse{from{transform:translateY(-5px)}to{transform:none}}
-  @media(max-width:760px){.event-grid{grid-template-columns:1fr}.schedule-hero{padding-top:4rem}.day-heading{align-items:flex-start;flex-direction:column}.event-meta{flex-direction:column;gap:.1rem}}
+  @font-face{font-family:'Barlow Condensed';src:url('/fonts/barlow-condensed-semibold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+  .schedule-page{--paper:#faf3e5;--ink:#183b2c;--clay:#892412;--plum:#653050;--rule:#cbbfa9;background-color:var(--paper);background-image:linear-gradient(#faf3e5a8,#faf3e5a8),url('/images/programacion/papel.webp');background-size:auto,540px 800px;color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.6}
+  .schedule-page :is(h1,h2,h3,h4,p){margin-top:0}.schedule-page :is(a,button,summary):focus-visible{outline:3px solid #d3931c;outline-offset:5px}.schedule-page :is(section,article,#agenda){scroll-margin-top:calc(var(--site-header-height,82px) + 94px)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .program-cover{border-top:8px solid var(--clay);border-bottom:1px solid var(--rule);overflow:hidden}.cover-grid{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:2.5rem;padding:3rem 0 2.5rem}.cover-university{margin-bottom:1.9rem;width:200px;height:auto}.cover-identity{display:flex;gap:1.1rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--clay);max-width:32rem}.cover-edition{font:600 clamp(5.4rem,9vw,8.8rem)/.9 'Barlow Condensed',sans-serif;color:var(--clay)}.cover-name{border-left:2px solid var(--ink);padding-left:1.1rem;font:600 clamp(1.15rem,2vw,1.65rem)/1 'Barlow Condensed',sans-serif;text-transform:uppercase}.cover-copy h1{font:600 clamp(3.2rem,6.4vw,5.8rem)/1.03 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:1.35rem 0 1.2rem;letter-spacing:-.015em}.cover-theme{font:600 clamp(1.7rem,2.4vw,2.3rem)/1.12 'Barlow Condensed',sans-serif;color:var(--plum);text-transform:uppercase}.cover-theme span{display:block;font-size:.76em;color:var(--ink);margin-top:.45rem}.cover-date{font:600 clamp(2.5rem,4vw,3.8rem)/1.1 'Barlow Condensed',sans-serif;margin:1.5rem 0 .45rem}.cover-date span{display:inline-block;font-size:.45em;margin-left:.8rem;text-transform:uppercase}.cover-location{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}.cover-art{width:100%;height:auto;max-height:650px;object-fit:contain;align-self:end}.cover-actions{display:flex;align-items:center;flex-wrap:wrap;gap:1rem 1.4rem;margin-top:1.65rem}.program-button{display:inline-flex;gap:1.7rem;align-items:center;padding:.75rem 1.1rem;background:var(--ink);color:var(--paper);font-size:.91rem;font-weight:600}.program-button:hover{background:var(--clay)}.program-link{font-size:.82rem;text-decoration:underline;text-underline-offset:4px;font-weight:600}.program-link span{margin-left:.3rem}
+  .program-welcome{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;padding:3.8rem 0}.eyebrow-text{display:block;font:600 .91rem/1.2 'Barlow Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);margin-bottom:.85rem}.program-welcome h2,.program-thanks h2{font:600 clamp(2rem,3.2vw,3rem)/1.04 'Cormorant Garamond',Georgia,serif;margin:0}.program-welcome h2 em,.program-thanks h2 em{font-style:normal;color:var(--plum)}.welcome-text p{margin-bottom:.95rem;font-size:.96rem}.welcome-text p:last-child{font-size:.88rem;font-weight:600;margin-bottom:0}
+  .program-nav{position:sticky;top:var(--site-header-height,82px);z-index:20;background:#faf3e5f5;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px)}.program-nav-inner{display:flex;align-items:stretch;gap:1.3rem}.day-tab{display:flex;align-items:center;gap:.65rem;color:var(--day-color);padding:.6rem .65rem;border-bottom:3px solid transparent;font-family:'Barlow Condensed',sans-serif}.day-tab span{font-size:.94rem;text-transform:uppercase}.day-tab strong{font-size:1.85rem;font-weight:600;line-height:1}.day-tab:hover,.day-tab[aria-current]{border-bottom-color:var(--day-color);background:#eaca8e3b}.extra-tab{display:flex;align-items:center;font-size:.82rem;font-weight:600}.extra-tab:first-of-type{margin-left:auto}.extra-tab:hover{text-decoration:underline;text-underline-offset:5px}
+  .schedule-content{padding-top:2.5rem}.reading-guide{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-bottom:2.5rem}.reading-guide p{font-size:.88rem;margin-bottom:0}.reading-guide p span{color:#5f5a54;font-size:.83rem}.text-button{background:none;border:0;border-bottom:1px solid var(--clay);padding:.4rem 0;color:var(--clay);font-family:inherit;font-size:.84rem;font-weight:600;cursor:pointer;text-align:left;flex-shrink:0}.text-button[hidden]{display:none}
+  .schedule-day{margin-bottom:4.8rem}.day-heading{background:var(--day-color);color:var(--paper);display:flex;align-items:center;gap:1.45rem;padding:1.15rem 1.8rem;border-bottom:5px solid #d3931c;position:relative;overflow:hidden}.day-number{font:600 6.2rem/.95 'Barlow Condensed',sans-serif}.day-heading h2{font:600 2rem/1.1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin-bottom:.2rem}.day-heading p{margin:0;text-transform:uppercase;font-size:.79rem;letter-spacing:.1em}.day-heading>img{position:absolute;right:1.25rem;width:140px;height:140px;opacity:.8;filter:brightness(1.2)}.day-timeline{margin-top:1.4rem}.time-group{display:grid;grid-template-columns:95px minmax(0,1fr);gap:1.3rem;margin-bottom:1.1rem}.time-rail{position:relative;border-right:1px solid var(--rule);padding-top:.9rem;padding-right:.65rem;color:var(--day-color)}.time-rail time{display:block;font:600 1.9rem/1.1 'Barlow Condensed',sans-serif}.time-rail>span{display:block;font-size:.65rem;font-weight:600;text-transform:uppercase;line-height:1.25;margin-top:.55rem;max-width:75px}.time-events{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;align-items:start}.parallel-events{grid-template-columns:repeat(2,minmax(0,1fr))}.event-card{background:#fffaf2cf;border:1px solid #cbbfa98c;border-top:3px solid var(--day-color);padding:1.3rem 1.5rem;min-width:0}.event-card:target{outline:3px solid #d3931c;outline-offset:3px}.event-meta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.3rem .8rem;color:var(--day-color)}.event-meta time{font:600 1.32rem/1.1 'Barlow Condensed',sans-serif}.event-meta>span{font-size:.78rem;font-weight:600}.event-kind{font:600 .87rem/1.15 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--day-color);margin:1rem 0 .65rem!important}.event-card h3{font:600 clamp(1.65rem,2.4vw,2.15rem)/1.09 'Cormorant Garamond',Georgia,serif;color:var(--day-color);margin-bottom:.8rem}.event-card h3 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}.event-people{font-size:.93rem;line-height:1.45;font-weight:600;margin-bottom:.35rem}.event-note{font-size:.83rem;line-height:1.5;color:#625d51;margin-bottom:.2rem}.portrait-row{float:right;display:flex;gap:.35rem;margin:0 0 .6rem 1rem}.portrait-row img{width:92px;height:110px;object-fit:cover;object-position:center 25%}.portrait-group{float:none;margin:0 0 .9rem;gap:.6rem}.portrait-group img{width:70px;height:78px}.event-card:after{content:'';display:table;clear:both}
+  .logistics-entry{grid-column:1/-1;display:flex;gap:1.4rem;align-items:center;background:#e9e1cfb8;padding:.6rem 1rem;font-size:.8rem;min-width:0}.logistics-entry>time{font:600 1.1rem/1.2 'Barlow Condensed',sans-serif;white-space:nowrap;color:var(--day-color)}.logistics-entry strong{font-weight:600}.logistics-entry span{margin-left:.65rem;color:#625d51}.talk-details{clear:both;margin-top:1rem;border-top:1px solid var(--rule)}.talk-details summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.7rem;list-style:none;padding:.85rem 0 .1rem;font-size:.86rem;font-weight:600;color:var(--day-color)}.talk-details summary::-webkit-details-marker{display:none}.detail-symbol:after{content:'+';font-size:1.1rem}.talk-details[open] .detail-symbol:after{content:'−'}.talk-details ol{counter-reset:talk;list-style:none;padding:0;margin:1rem 0 0}.talk-details li{position:relative;counter-increment:talk;padding:1.05rem 0 1.05rem 2.1rem;border-top:1px solid #cbbfa966}.talk-details li:before{content:counter(talk,decimal-leading-zero);position:absolute;left:0;top:1.06rem;font:600 1rem/1.3 'Barlow Condensed',sans-serif;color:var(--day-color)}.talk-details li h4{font:600 1rem/1.45 Inter,Arial,sans-serif;margin-bottom:.35rem;color:#161e15}.talk-author{font-size:.9rem;line-height:1.5;margin-bottom:.1rem}.talk-affiliation{font-size:.81rem;line-height:1.45;color:#625d51;margin-bottom:0}.talk-details li:last-child{padding-bottom:0}.day-back{display:block;text-align:right;font-size:.79rem;font-weight:600;color:var(--day-color);margin-top:1.2rem}.day-back:hover{text-decoration:underline}
+  .exhibition{display:grid;grid-template-columns:1.15fr 1fr;gap:3rem;background:var(--ink);color:var(--paper);padding:clamp(1.5rem,4vw,3.5rem);margin:0 0 4rem}.exhibition .eyebrow-text{color:#eaca8e}.exhibition-time{font:600 1.8rem/1.1 'Barlow Condensed',sans-serif;margin-bottom:1.4rem}.exhibition h2{font:600 clamp(2.7rem,4.3vw,4.2rem)/.95 'Cormorant Garamond',Georgia,serif;margin-bottom:1.7rem}.exhibition h2 em{font-style:normal;color:#eaca8e}.exhibition h3{font:600 clamp(1.45rem,2.4vw,2rem)/1.14 'Cormorant Garamond',Georgia,serif;margin-bottom:1rem}.exhibition-author{font-weight:600}.exhibition-copy>p:last-child{font-size:.9rem;margin-bottom:0}.exhibition-visual{position:relative;align-self:center;padding-bottom:2rem}.exhibition-visual>img:first-child{width:100%;height:auto;aspect-ratio:1.1;object-fit:cover;object-position:60% center}.exhibition-motif{position:absolute;right:-1.5rem;bottom:-2rem;background:var(--paper);border-radius:50%;width:150px;height:150px;padding:.3rem}
+  .program-thanks{padding-bottom:3rem}.program-thanks h2{margin-bottom:1.3rem}.thanks-intro{max-width:870px;font-size:1rem}.institutions{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem;margin-top:2.5rem}.institutions figure{margin:0;display:flex;flex-direction:column;min-width:0}.institutions figure>span{font:600 .8rem/1.2 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--clay);min-height:2rem}.institutions figure>div{height:110px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:.8rem;padding:.7rem 0}.institutions img{max-height:85px;width:auto;max-width:100%;object-fit:contain}.institutions figcaption{font-size:.8rem;font-weight:600;line-height:1.45}.program-end{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;border-top:1px solid var(--rule);padding:2.2rem 0 3rem}.program-end p{font:600 1.8rem/1.1 'Cormorant Garamond',Georgia,serif;margin:0}.program-end p strong{font-weight:600;color:var(--plum)}.program-end a{font-size:.88rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+  @media(max-width:960px){.parallel-events{grid-template-columns:1fr}.cover-grid{gap:1rem}.cover-actions{display:grid}.program-nav-inner{gap:.7rem}.program-welcome{gap:1.6rem}.reading-guide{align-items:flex-start;flex-direction:column;gap:1rem}.institutions{grid-template-columns:repeat(3,minmax(0,1fr))}.exhibition{gap:1.8rem}}
+  @media(max-width:600px){.cover-grid{grid-template-columns:1fr;position:relative;padding-top:1.7rem;padding-bottom:1.4rem;gap:1.4rem}.cover-university{margin:0 auto 1.5rem}.cover-identity{justify-content:center;max-width:none}.cover-edition{font-size:6.5rem}.cover-name{font-size:1.25rem}.cover-copy h1{font-size:clamp(2.9rem,13vw,4.6rem);margin-top:1rem}.cover-theme{font-size:1.9rem}.cover-theme span{font-size:.76em}.cover-date{font-size:3rem;margin-top:1rem}.cover-date span{font-size:.42em;margin-left:.5rem}.cover-location{font-size:.67rem}.cover-actions{display:flex;margin-top:1.25rem;gap:.9rem}.program-button{font-size:.84rem;gap:.8rem}.program-link{font-size:.77rem}.cover-art{width:min(100%,350px);max-height:330px;justify-self:center}.program-welcome{grid-template-columns:1fr;padding:2.3rem 0;gap:1.3rem}.program-welcome h2{font-size:2.25rem}.welcome-text p{font-size:.91rem}.program-nav-inner{gap:0;justify-content:space-between}.day-tab{padding:.65rem .33rem;display:flex;flex-direction:column;gap:.1rem}.day-tab span{font-size:.74rem}.day-tab strong{font-size:1.55rem}.extra-tab{font-size:.68rem;padding:0 .25rem}.schedule-content{padding-top:1.6rem}.reading-guide{margin-bottom:1.5rem}.day-heading{padding:1.05rem 1.2rem;gap:1rem}.day-number{font-size:5.25rem}.day-heading h2{font-size:1.65rem}.day-heading p{font-size:.71rem}.day-heading>img{right:.2rem;width:96px;height:96px;opacity:.65}.schedule-day{margin-bottom:3rem}.time-group{grid-template-columns:minmax(0,1fr);gap:.45rem;margin-bottom:1.25rem}.time-rail{display:flex;align-items:baseline;gap:.7rem;border-right:0;padding-top:.2rem}.time-rail time{font-size:1.65rem}.time-rail>span{font-size:.7rem;max-width:none;margin:0}.event-card{padding:1.05rem 1rem}.event-meta{justify-content:flex-start;gap:.6rem}.event-meta>span{font-size:.72rem}.event-kind{font-size:.82rem}.event-card h3{font-size:1.8rem}.event-people{font-size:.88rem}.portrait-row img{width:74px;height:89px}.portrait-group img{width:66px;height:75px}.talk-details li{padding-left:1.8rem}.talk-details li h4{font-size:.94rem}.talk-author{font-size:.86rem}.talk-affiliation{font-size:.79rem}.logistics-entry{align-items:flex-start;gap:.8rem;padding:.65rem .75rem}.logistics-entry span{display:block;margin:0;font-size:.73rem}.logistics-entry>time{font-size:1.05rem}.exhibition{grid-template-columns:1fr;padding:1.5rem;margin-bottom:2.7rem;gap:1.8rem}.exhibition-visual{width:100%;max-width:360px;justify-self:center}.exhibition-visual>img:first-child{aspect-ratio:1.35}.exhibition-motif{right:-.5rem;bottom:-1rem;width:115px;height:115px}.exhibition h2{font-size:3rem}.exhibition h3{font-size:1.7rem}.program-thanks h2{font-size:2.35rem}.thanks-intro{font-size:.91rem}.institutions{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.institutions figure>span{font-size:.74rem}.institutions figure>div{height:100px}.institutions figcaption{font-size:.76rem}.program-end{flex-direction:column;align-items:flex-start}.program-end p{font-size:1.65rem}}
+  @media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}}
+  @media print{.program-nav,.cover-actions,.text-button,.day-back,.program-end a{display:none}.schedule-page{background:white}.program-cover{border-top:0}.cover-art{max-height:250px}.program-welcome{padding:1.5rem 0}.cover-grid{padding:1rem 0}.time-group{grid-template-columns:70px 1fr;break-inside:avoid}.event-card{box-shadow:none}.event-card,.logistics-entry{break-inside:avoid}.schedule-day{break-before:page}.day-heading{print-color-adjust:exact}.exhibition{break-before:page;print-color-adjust:exact}.institutions{grid-template-columns:repeat(5,minmax(0,1fr))}.program-thanks{break-before:page}}
 </style>

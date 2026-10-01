@@ -1,0 +1,1326 @@
+{
+  "updated": "2026-10-01",
+  "canvaDesignId": "DAHWtmLPsqg",
+  "canvaViewUrl": "https://www.canva.com/d/cUwCa88UGVYjcr7",
+  "intro": [
+    "El XIII Coloquio Internacional en Lenguaje y Cultura convoca a docentes, investigadores, estudiantes y creadores a conversar sobre las pedagogías críticas y las múltiples formas de conocer, narrar y habitar el mundo.",
+    "Durante tres días, las conferencias, mesas temáticas, talleres y experiencias artísticas pondrán en relación la interculturalidad, las voces de los territorios, la literatura y los desafíos de la educación. El encuentro propone escuchar saberes diversos y abrir preguntas compartidas sobre el lenguaje, la cultura y la transformación de nuestras prácticas.",
+    "Organizan el Doctorado en Lenguaje y Cultura y la Maestría en Lingüística de la Universidad Pedagógica y Tecnológica de Colombia."
+  ],
+  "thanks": "Nuestro agradecimiento a las instituciones que organizan y acompañan el XIII Coloquio Internacional en Lenguaje y Cultura, y a quienes comparten sus saberes en cada conferencia, mesa, taller y experiencia artística.",
+  "days": [
+    {
+      "id": "miercoles-21",
+      "day": 21,
+      "weekday": "Miércoles",
+      "short": "Mié. 21",
+      "date": "Miércoles 21 de octubre",
+      "accent": "#892412",
+      "groups": [
+        {
+          "start": "07:45",
+          "events": [
+            {
+              "id": "registro-21",
+              "time": "07:45–12:00",
+              "start": "07:45",
+              "end": "12:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Registro",
+              "title": "Registro"
+            }
+          ]
+        },
+        {
+          "start": "08:30",
+          "events": [
+            {
+              "id": "conferencia-inaugural",
+              "time": "08:30–10:30",
+              "start": "08:30",
+              "end": "10:30",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Apertura y conferencia inaugural",
+              "title": "Lenguajes. El gesto, la palabra y el trazo en la milenaria tradición ancestral amazónica",
+              "people": "Fernando Urbina Rangel",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-5.jpg",
+                  "name": "Fernando Urbina Rangel"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "10:20",
+          "events": [
+            {
+              "id": "mesa-1",
+              "time": "10:20–12:00",
+              "start": "10:20",
+              "end": "12:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 1",
+              "number": 1,
+              "title": "Literatura escrita por mujeres y viceversa",
+              "talks": [
+                {
+                  "title": "El archivo afectivo en A cabeça do santo de Socorro Acioli",
+                  "author": "Ayda Elizabeth Blanco Estupiñán",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Mujer y arte, entre la palabra compartida y la desobediencia",
+                  "author": "Ángela María Díaz Martínez",
+                  "affiliation": "Colegio Nuestra Señora de Fátima, Tunja"
+                },
+                {
+                  "title": "El retrato de la mujer en Rosario Castellanos y Marvel Moreno",
+                  "author": "Yaniana Castro Rátiva",
+                  "affiliation": "Instituto Caro y Cuervo"
+                },
+                {
+                  "title": "Lecturas feministas de La vorágine y Noche negra: una aproximación comparativa",
+                  "author": "Nasli Giomara Farfán Pérez",
+                  "affiliation": "Universidad Surcolombiana"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "10:30",
+          "events": [
+            {
+              "id": "pausa-21-2",
+              "time": "10:30–10:45",
+              "start": "10:30",
+              "end": "10:45",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "10:45",
+          "events": [
+            {
+              "id": "conferencia-2",
+              "time": "10:45–12:00",
+              "start": "10:45",
+              "end": "12:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Conferencia 2",
+              "title": "Semiosis decolonial: Hacia una crítica material de la ‘postverdad’",
+              "people": "José Romero Losacco",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-6.jpg",
+                  "name": "José Romero Losacco"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "12:00",
+          "events": [
+            {
+              "id": "pausa-21-5",
+              "time": "12:00–14:00",
+              "start": "12:00",
+              "end": "14:00",
+              "rooms": [
+                "Paraninfo",
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso de mediodía"
+            }
+          ]
+        },
+        {
+          "start": "14:00",
+          "events": [
+            {
+              "id": "panel-narrativas-decoloniales",
+              "time": "14:00–16:00",
+              "start": "14:00",
+              "end": "16:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Panel",
+              "title": "Narrativas decoloniales: literatura, medios y prácticas artísticas en América Latina",
+              "people": "Rogério Lobo Sáber, Ángela Chaverra y Dany Velásquez",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-8.jpg",
+                  "name": "Rogério Lobo Sáber"
+                },
+                {
+                  "src": "/images/invitados/invitado-3.jpg",
+                  "name": "Ángela Chaverra"
+                },
+                {
+                  "src": "/images/invitados/invitado-4.jpg",
+                  "name": "Dany Velásquez"
+                }
+              ]
+            },
+            {
+              "id": "mesa-2",
+              "time": "14:00–16:00",
+              "start": "14:00",
+              "end": "16:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 2",
+              "number": 2,
+              "title": "¿Puede la investigación ser una ceremonia? Caminando colectivamente una praxis relacional y decolonial desde la comunidad investigativa Knowledge in Action",
+              "talks": [
+                {
+                  "title": "¿Puede la investigación ser una ceremonia? La investigación como relación, responsabilidad y reciprocidad",
+                  "author": "Nancy Emilce Carvajal Medina",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Caminar juntxs: construir comunidad investigativa. Pertenencia, colaboración y aprendizaje colectivo en Knowledge in Action",
+                  "author": "Juliana Estefanía Barrote Ormaza",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Transformarse investigando. Devenir investigadores relacionales y decoloniales",
+                  "author": "Silvia Daniela Sierra Vargas",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Más allá del método. Descolonizar las prácticas de producción de conocimiento",
+                  "author": "Maribel Rojas Fernández",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Cierre colectivo. Hacia futuros posibles: investigación, ceremonia y praxis decolonial",
+                  "author": "Todo el grupo.",
+                  "affiliation": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "16:00",
+          "events": [
+            {
+              "id": "pausa-21-9",
+              "time": "16:00–16:15",
+              "start": "16:00",
+              "end": "16:15",
+              "rooms": [
+                "Paraninfo",
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "16:15",
+          "events": [
+            {
+              "id": "conferencia-3",
+              "time": "16:15–17:30",
+              "start": "16:15",
+              "end": "17:30",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Conferencia 3",
+              "title": "De la violencia escolar a la pedagogía de la liberación en el aula: apuestas desde el feminismo y la educación popular",
+              "people": "Alicia Hopkins",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-2.jpg",
+                  "name": "Alicia Hopkins"
+                }
+              ]
+            },
+            {
+              "id": "mesa-3",
+              "time": "16:15–17:55",
+              "start": "16:15",
+              "end": "17:55",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 3",
+              "number": 3,
+              "title": "Interculturalidad en las áreas de salud y educación",
+              "talks": [
+                {
+                  "title": "Tejiendo saberes en la partería intercultural: identidad mestiza, sabiduría del cuerpo y práctica decolonial",
+                  "author": "Sara Barbosa",
+                  "affiliation": "Fundación Mujeres Bachué"
+                },
+                {
+                  "title": "La interculturalidad, un desafío de la atención en salud en Colombia",
+                  "author": "Jonathan García Jiménez",
+                  "affiliation": "Pontificia Universidad Javeriana y Hospital Universitario Nacional de Colombia"
+                },
+                {
+                  "title": "¿De qué hablamos cuando hablamos sobre interculturalidad? Una mirada a tres universidades en Colombia",
+                  "author": "Jhon Eduardo Mosquera Pérez, Lisseth Rojas Barreto y Alexander Ramírez Espinosa",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Interculturalidad en el currículo de idiomas en Colombia: realidades y desafíos",
+                  "author": "Iván Ricardo Miranda Montenegro",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "17:30",
+          "events": [
+            {
+              "id": "socializacion-beca",
+              "time": "17:30–18:00",
+              "start": "17:30",
+              "end": "18:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Socialización de beca",
+              "title": "Coordenadas de lo efímero: cartografía viva de la dramaturgia tunjana. Beca de investigación teatral",
+              "people": "Viviana Alba"
+            }
+          ]
+        },
+        {
+          "start": "18:15",
+          "events": [
+            {
+              "id": "obra-teatro",
+              "time": "18:15–20:15",
+              "start": "18:15",
+              "end": "20:15",
+              "rooms": [
+                "Auditorio Clímaco Hernández"
+              ],
+              "type": "event",
+              "kind": "Teatro y conversatorio",
+              "title": "Iara, la dialéctica del mito",
+              "people": "Cuerpo Abierto Teatro",
+              "note": "Biblioteca Central Jorge Palacios Preciado · UPTC, Tunja"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jueves-22",
+      "day": 22,
+      "weekday": "Jueves",
+      "short": "Jue. 22",
+      "date": "Jueves 22 de octubre",
+      "accent": "#183B2C",
+      "groups": [
+        {
+          "start": "08:00",
+          "events": [
+            {
+              "id": "registro-22",
+              "time": "08:00–12:00",
+              "start": "08:00",
+              "end": "12:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Registro",
+              "title": "Registro"
+            },
+            {
+              "id": "mesa-4",
+              "time": "08:00–09:20",
+              "start": "08:00",
+              "end": "09:20",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 4",
+              "number": 4,
+              "title": "Enseñanza de idiomas y autorregulación de aprendizaje en un mundo mediado por la virtualidad y la inteligencia artificial",
+              "talks": [
+                {
+                  "title": "Los retos de la educación bilingüe en la era de la globalización",
+                  "author": "Marco Tulio Carivan Ponare",
+                  "affiliation": "investigador independiente"
+                },
+                {
+                  "title": "A new Era: Virtual Learning in Action for students at Universidad Surcolombiana",
+                  "author": "Sharick Fernanda Cubillos Olaya y Ana María Campuzano Falla",
+                  "affiliation": "Universidad Surcolombiana"
+                },
+                {
+                  "title": "Autorregulación del aprendizaje mediado por Inteligencia Artificial en líderes técnicos de TI del sector utilities en Colombia",
+                  "author": "Iván Orlando Díaz Bueno",
+                  "affiliation": "Universidad Autónoma de Bucaramanga"
+                }
+              ]
+            },
+            {
+              "id": "mesa-5",
+              "time": "08:00–10:25",
+              "start": "08:00",
+              "end": "10:25",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 5",
+              "number": 5,
+              "title": "Lengua, educación y territorio: investigación con comunidades indígenas",
+              "talks": [
+                {
+                  "title": "Retos de la educación propia, para la enseñanza de la diversidad étnica y la interculturalidad en la formación de maestros y maestras de Ciencias Sociales en la UPTC",
+                  "author": "Álvaro Ricardo Gómez Murillo",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Jíbibɨrɨ úai: las prácticas del mambeadero como una metodología para la descolonización de la enseñanza y el aprendizaje",
+                  "author": "Maribel Berrío Moncada",
+                  "affiliation": "Universidad de Antioquia"
+                },
+                {
+                  "title": "Cuando hablar español resulta más fácil: ecología de presiones y desplazamiento lingüístico del kamënts̈á",
+                  "author": "Jaime Alejandro Barón Sotto",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "La investigación desde adentro: experiencias de documentación y revitalización lingüística desde la pertenencia comunitaria con pueblos indígenas de Colombia",
+                  "author": "Andersson David Causaya Cerón",
+                  "affiliation": "Instituto Caro y Cuervo"
+                },
+                {
+                  "title": "De la palabra heredada al conocimiento escrito: tensiones entre oralidad y escritura en comunidades indígenas y afrocolombianas",
+                  "author": "Jhina Luz Gómez Villera",
+                  "affiliation": "Universidad INCCA de Colombia"
+                },
+                {
+                  "title": "Relaciones con el agua y traducción colonial: muiscas y castellanos en el altiplano cundiboyacense durante el siglo XVI",
+                  "author": "Luis Alejandro Cruz González",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "09:20",
+          "events": [
+            {
+              "id": "pausa-22-18",
+              "time": "09:20–09:30",
+              "start": "09:20",
+              "end": "09:30",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "09:30",
+          "events": [
+            {
+              "id": "conferencia-4",
+              "time": "09:30–11:00",
+              "start": "09:30",
+              "end": "11:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Conferencia 4",
+              "title": "Epistemología descolonial",
+              "people": "Rafael Bautista Segales",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-1.jpg",
+                  "name": "Rafael Bautista Segales"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "10:25",
+          "events": [
+            {
+              "id": "pausa-22-19",
+              "time": "10:25–10:40",
+              "start": "10:25",
+              "end": "10:40",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "10:40",
+          "events": [
+            {
+              "id": "mesa-6",
+              "time": "10:40–12:00",
+              "start": "10:40",
+              "end": "12:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 6",
+              "number": 6,
+              "title": "Pedagogías decoloniales y desafíos contemporáneos",
+              "talks": [
+                {
+                  "title": "Pedagogías de la re-existencia: Estado del arte sobre la producción investigativa de la Universidad Distrital Francisco José de Caldas",
+                  "author": "Geraldine Sierra Lozano",
+                  "affiliation": "Universidad Distrital Francisco José de Caldas"
+                },
+                {
+                  "title": "Cuerpos en suspensión y polifonías equitativas: cazando imaginarios nocivos de género",
+                  "author": "Ana Angulo, Paula González y Yisela Pulido",
+                  "affiliation": "Colectiva Leu y Teu"
+                },
+                {
+                  "title": "Decolonizar la investigación: una reflexión sobre la producción de conocimiento",
+                  "author": "Dubán Santiago López Suárez",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "11:00",
+          "events": [
+            {
+              "id": "pausa-22-22",
+              "time": "11:00–11:10",
+              "start": "11:00",
+              "end": "11:10",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "11:10",
+          "events": [
+            {
+              "id": "conferencia-5",
+              "time": "11:10–12:10",
+              "start": "11:10",
+              "end": "12:10",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Conferencia 5",
+              "title": "Descolonizando el ser: sentipensando y caminando la palabra",
+              "people": "Nancy Carvajal",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-7.jpg",
+                  "name": "Nancy Carvajal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "12:00",
+          "events": [
+            {
+              "id": "pausa-22-25",
+              "time": "12:00–14:00",
+              "start": "12:00",
+              "end": "14:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso de mediodía"
+            }
+          ]
+        },
+        {
+          "start": "12:10",
+          "events": [
+            {
+              "id": "pausa-22-24",
+              "time": "12:10–14:00",
+              "start": "12:10",
+              "end": "14:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso de mediodía"
+            }
+          ]
+        },
+        {
+          "start": "14:00",
+          "events": [
+            {
+              "id": "taller-1",
+              "time": "14:00–15:15",
+              "start": "14:00",
+              "end": "15:15",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Taller 1",
+              "title": "Educación popular en el aula: dinámicas y herramientas para docentes",
+              "people": "Alicia Hopkins",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-2.jpg",
+                  "name": "Alicia Hopkins"
+                }
+              ]
+            },
+            {
+              "id": "mesa-7",
+              "time": "14:00–15:20",
+              "start": "14:00",
+              "end": "15:20",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 7",
+              "number": 7,
+              "title": "Lo que se produce en el margen: forma, raíz y territorio en la narrativa latinoamericana",
+              "talks": [
+                {
+                  "title": "Escrituras ch'ixi de mediados de siglo: exclusión, forma y colonialismo interno en la narrativa latinoamericana (1949-1963)",
+                  "author": "Hernán Darío Hernández Quintero",
+                  "affiliation": "Universidad Tecnológica de Pereira"
+                },
+                {
+                  "title": "Literatura afrocaribeña: una ventana para redescubrir la «tercera raíz» de la identidad hispanoamericana según Luz María Martínez Montiel",
+                  "author": "Carlos Andrés Vélez Peláez",
+                  "affiliation": "Universidad Tecnológica de Pereira"
+                },
+                {
+                  "title": "La experiencia del paisaje selvático y la transformación del sujeto en Las niñas del naranjel de Gabriela Cabezón Cámara",
+                  "author": "Jackeline Parra Londoño",
+                  "affiliation": "Universidad Tecnológica de Pereira"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "15:15",
+          "events": [
+            {
+              "id": "pausa-22-28",
+              "time": "15:15–15:30",
+              "start": "15:15",
+              "end": "15:30",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "15:20",
+          "events": [
+            {
+              "id": "pausa-22-29",
+              "time": "15:20–15:35",
+              "start": "15:20",
+              "end": "15:35",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "15:30",
+          "events": [
+            {
+              "id": "taller-historias-globales",
+              "time": "15:30–16:45",
+              "start": "15:30",
+              "end": "16:45",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Taller 2",
+              "title": "Historias Globales desde el Sur, escapando de la jaula historiográfica colonial",
+              "people": "José Romero Losacco",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-6.jpg",
+                  "name": "José Romero Losacco"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "15:35",
+          "events": [
+            {
+              "id": "conferencia-6",
+              "time": "15:35–16:35",
+              "start": "15:35",
+              "end": "16:35",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "event",
+              "kind": "Conferencia 6",
+              "title": "Leer de otro modo: la literatura y la invención de nuevas pedagogías",
+              "people": "Rogério Lobo Sáber",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-8.jpg",
+                  "name": "Rogério Lobo Sáber"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "16:35",
+          "events": [
+            {
+              "id": "instalacion-mesa-8",
+              "time": "16:35–16:40",
+              "start": "16:35",
+              "end": "16:40",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Transición",
+              "title": "Instalación de mesa 8"
+            }
+          ]
+        },
+        {
+          "start": "16:40",
+          "events": [
+            {
+              "id": "mesa-8",
+              "time": "16:40–18:00",
+              "start": "16:40",
+              "end": "18:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 8",
+              "number": 8,
+              "title": "Relaciones entre lengua, identidad y territorio",
+              "talks": [
+                {
+                  "title": "Variación léxico-semántica y paralingüística en el argot del gremio transportador de carga pesada de la ciudad de Duitama",
+                  "author": "Cristian Felipe Blanco Martínez",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "La identidad regional en el moño: prácticas discursivas de la copla tradicional desde una perspectiva sociolingüística",
+                  "author": "María José Nieves Herreño",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Implicaturas del adjetivo calificativo en el habla de Tunja desde la Teoría de la Relevancia",
+                  "author": "Jhoandry Jholima López García",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "16:45",
+          "events": [
+            {
+              "id": "cuando-el-cuerpo-habla",
+              "time": "16:45–18:00",
+              "start": "16:45",
+              "end": "18:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Performance · conferencia",
+              "title": "Cuando el cuerpo habla",
+              "people": "Ángela Chaverra",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-3.jpg",
+                  "name": "Ángela Chaverra"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "viernes-23",
+      "day": 23,
+      "weekday": "Viernes",
+      "short": "Vie. 23",
+      "date": "Viernes 23 de octubre",
+      "accent": "#653050",
+      "groups": [
+        {
+          "start": "08:00",
+          "events": [
+            {
+              "id": "registro-23",
+              "time": "08:00–12:00",
+              "start": "08:00",
+              "end": "12:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Registro",
+              "title": "Registro"
+            }
+          ]
+        },
+        {
+          "start": "08:15",
+          "events": [
+            {
+              "id": "mesa-9",
+              "time": "08:15–10:15",
+              "start": "08:15",
+              "end": "10:15",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 9",
+              "number": 9,
+              "title": "Narrativas al margen: contextos educativos, estéticas y territorios",
+              "talks": [
+                {
+                  "title": "Narrativas pedagógicas de maestras rurales afrodescendientes en los Montes de María: prácticas discursivas de memoria, identidad y construcción territorial de paz",
+                  "author": "Berlinda Isabel Cassiani Molina",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Habitar entre lenguas: experiencias narradas por estudiantes indígenas universitarios del Cauca",
+                  "author": "Maribel Rojas Fernández",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Corporalidades campesinas y prácticas artísticas",
+                  "author": "Luis Yecid Bayona",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Sentidos de la experiencia docente en la puesta en práctica del modelo educativo propio Shama Zhigui: narrativas pedagógicas de un grupo de docentes de la Institución Educativa Técnica Kanzasinamke de la comunidad Tezhumke del pueblo Wiwa",
+                  "author": "Gabriel Ángel Galiano Rangel",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "La dimensión estética en las prácticas del decir de personas habitantes de calle en condición de locura de la comuna 19 de Santiago de Cali",
+                  "author": "Ricardo Abdul Canizales Romero",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            },
+            {
+              "id": "mesa-10",
+              "time": "08:15–10:15",
+              "start": "08:15",
+              "end": "10:15",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 10",
+              "number": 10,
+              "title": "Mujeres campesinas, educación rural y género",
+              "talks": [
+                {
+                  "title": "Voces de mujeres rurales: narrativas que exploran las prácticas de cuidado y las normas basadas en el género en la comunidad de Toca, Boyacá",
+                  "author": "Michell Dayana Vanegas Becerra",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "El cuerpo-mujer rural como territorio epistémico: pedagogías encarnadas de resistencia en escuelas rurales multigrado",
+                  "author": "Cristian Camilo Reyes Galeano y Shari Daniela Ramírez Salazar",
+                  "affiliation": "Universidad del Quindío"
+                },
+                {
+                  "title": "Sembrando voces: leer, escribir y hablar desde la raíz",
+                  "author": "Martha Isabel Gómez Gómez, María Trinidad Cabanzo Cuadrado y Ruth Julieth Muñoz Pino",
+                  "affiliation": "Universidad INCCA de Colombia"
+                },
+                {
+                  "title": "Florecer juntas: educación popular con enfoque de género para fortalecer la autonomía y el emprendimiento de mujeres rurales en Anapoima – Cundinamarca",
+                  "author": "Laura Valentina Barragán Sierra, Elkin Durán Mancipe y Fabio Edisson Morera Forero",
+                  "affiliation": "Universidad Santiago de Cali"
+                },
+                {
+                  "title": "Fortalecimiento de la comprensión inferencial y crítica mediante aprendizaje colaborativo en un aula multigrado rural",
+                  "author": "Sandra Rocío Vargas Amézquita",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "10:15",
+          "events": [
+            {
+              "id": "pausa-23-38",
+              "time": "10:15–10:30",
+              "start": "10:15",
+              "end": "10:30",
+              "rooms": [
+                "Paraninfo",
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "10:30",
+          "events": [
+            {
+              "id": "conversatorio-multilinguismo",
+              "time": "10:30–12:00",
+              "start": "10:30",
+              "end": "12:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Conversatorio abierto",
+              "title": "Multilingüismo, derechos lingüísticos y política pública: debates en torno a la Ley 2630 de 2026",
+              "people": "Moderan Nancy Emilce Carvajal Medina y Andersson David Causaya Cerón, Red del Activismo Lingüístico en Colombia"
+            },
+            {
+              "id": "mesa-11",
+              "time": "10:30–12:10",
+              "start": "10:30",
+              "end": "12:10",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 11",
+              "number": 11,
+              "title": "Pedagogías decoloniales, producción colectiva de conocimiento y construcción de capacidades para la garantía de derechos en contextos territoriales",
+              "talks": [
+                {
+                  "title": "Contra el silencio de la guerra: el duelo como práctica pedagógica y política",
+                  "author": "Julián David Marín Quintero",
+                  "affiliation": "Escuela Superior de Administración Pública"
+                },
+                {
+                  "title": "Del derecho escrito al saber vivido: traducción pedagógica y formación comunitaria en el restablecimiento de derechos del Virrúa Emberá Chamí",
+                  "author": "Oscar Zoni Delgado Delgado",
+                  "affiliation": "Escuela Superior de Administración Pública"
+                },
+                {
+                  "title": "Narrar para resistir: co-creación de conocimiento con mujeres buscadoras de Montes de María desde la memoria territorial",
+                  "author": "Yurleidis Arregoces Robles",
+                  "affiliation": "Escuela Superior de Administración Pública."
+                },
+                {
+                  "title": "Del diálogo de saberes a la producción colectiva de conocimiento: una reflexión sobre la construcción de capacidades para la acción colectiva",
+                  "author": "Carolina García Sánchez",
+                  "affiliation": "Escuela Superior de Administración Pública"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "12:00",
+          "events": [
+            {
+              "id": "pausa-23-42",
+              "time": "12:00–14:00",
+              "start": "12:00",
+              "end": "14:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso de mediodía"
+            }
+          ]
+        },
+        {
+          "start": "12:10",
+          "events": [
+            {
+              "id": "pausa-23-43",
+              "time": "12:10–14:00",
+              "start": "12:10",
+              "end": "14:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso de mediodía"
+            }
+          ]
+        },
+        {
+          "start": "14:00",
+          "events": [
+            {
+              "id": "taller-metodo-critico",
+              "time": "14:00–15:10",
+              "start": "14:00",
+              "end": "15:10",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "event",
+              "kind": "Taller 2",
+              "title": "El método crítico de la ética y el método ético de la crítica",
+              "people": "Rafael Bautista Segales",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-1.jpg",
+                  "name": "Rafael Bautista Segales"
+                }
+              ]
+            },
+            {
+              "id": "mesa-12",
+              "time": "14:00–15:20",
+              "start": "14:00",
+              "end": "15:20",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 12",
+              "number": 12,
+              "title": "Territorio, reparación colectiva e interculturalidad crítica: perspectivas decoloniales para comprender la garantía de derechos en contextos de conflicto armado",
+              "talks": [
+                {
+                  "title": "Cuando la tierra también es víctima: desafíos de la reparación colectiva en territorios indígenas",
+                  "author": "Carolina Canaval Largo",
+                  "affiliation": "Escuela Superior de Administración Pública"
+                },
+                {
+                  "title": "Cuando arrancan la tierra. Una lectura decolonial sobre territorio e identidad en contextos de desplazamiento forzado",
+                  "author": "Diana Carolina Ordóñez Eraso",
+                  "affiliation": "Escuela Superior de Administración Pública"
+                },
+                {
+                  "title": "Implementación de la reparación psicosocial en mujeres víctimas rurales de Tumaco (Nariño): un análisis documental del PAPSIVI desde la justicia transicional (2016-2025)",
+                  "author": "Linda Berónica Borja Nazareno",
+                  "affiliation": "Escuela Superior de Administración Pública"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "15:10",
+          "events": [
+            {
+              "id": "instalacion-mesa-14",
+              "time": "15:10–15:15",
+              "start": "15:10",
+              "end": "15:15",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Transición",
+              "title": "Instalación de mesa 14"
+            }
+          ]
+        },
+        {
+          "start": "15:15",
+          "events": [
+            {
+              "id": "mesa-14",
+              "time": "15:15–16:15",
+              "start": "15:15",
+              "end": "16:15",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 14",
+              "number": 14,
+              "title": "Literaturas y estéticas desbordadas (2)",
+              "talks": [
+                {
+                  "title": "Lo diabólico y lo monstruoso en dos novelas sobre la plantación en Colombia",
+                  "author": "Leonardo Gil Gómez",
+                  "affiliation": "Universidad Distrital Francisco José de Caldas"
+                },
+                {
+                  "title": "Blasphemia contra ordinem: el lenguaje disruptivo en el Black Metal",
+                  "author": "Hernán Javier Pinzón Manrique",
+                  "affiliation": "Universidad Santo Tomás"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "15:20",
+          "events": [
+            {
+              "id": "instalacion-mesa-13",
+              "time": "15:20–15:25",
+              "start": "15:20",
+              "end": "15:25",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Transición",
+              "title": "Instalación de mesa 13"
+            }
+          ]
+        },
+        {
+          "start": "15:25",
+          "events": [
+            {
+              "id": "mesa-13",
+              "time": "15:25–16:45",
+              "start": "15:25",
+              "end": "16:45",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 13",
+              "number": 13,
+              "title": "Espacios y materialidades: arte barroco, espacio público y geopolítica global",
+              "talks": [
+                {
+                  "title": "Escenografías de la agencia: El arco toral y la teatralidad barroca como dispositivos de negociación cultural en el Templo Doctrinero de Tópaga",
+                  "author": "Juan Guillermo Rey Pérez",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Agencia cultural, apropiación del espacio público y formación ciudadana: Prácticas de resistencia en Tunja",
+                  "author": "María Camila Jaimes Cárdenas",
+                  "affiliation": "graduada de la Maestría en Educación de la Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "América Latina en la geopolítica de la tecnología: datos y minerales estratégicos en las nuevas formas del neocolonialismo estadounidense",
+                  "author": "Merly Guanumen Pacheco",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia, Pontificia Universidad Javeriana y Universidad Militar Nueva Granada"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "16:15",
+          "events": [
+            {
+              "id": "instalacion-mesa-15",
+              "time": "16:15–16:20",
+              "start": "16:15",
+              "end": "16:20",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "logistics",
+              "kind": "Transición",
+              "title": "Instalación de mesa 15"
+            }
+          ]
+        },
+        {
+          "start": "16:20",
+          "events": [
+            {
+              "id": "mesa-15",
+              "time": "16:20–18:00",
+              "start": "16:20",
+              "end": "18:00",
+              "rooms": [
+                "Auditorio Hunza 1"
+              ],
+              "type": "mesa",
+              "kind": "Mesa temática 15",
+              "number": 15,
+              "title": "Semiótica y análisis crítico del discurso",
+              "talks": [
+                {
+                  "title": "Imágenes que reclaman memoria: videoclip de protesta juvenil, cultura visual y estallido social colombiano",
+                  "author": "Jazmín Adriana Rubiano Rubiano",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Minga, territorio y voz indígena en la prensa digital colombiana. Análisis crítico del discurso de representaciones mediáticas, 2019-2026",
+                  "author": "Harvey Humberto Merchán Cante",
+                  "affiliation": "Universidad Distrital Francisco José de Caldas"
+                },
+                {
+                  "title": "Análisis multimodal en las caricaturas de Matador relacionadas con el COVID-19 en Colombia, representaciones de una pandemia",
+                  "author": "Deisy Lorena Díaz Ávila",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                },
+                {
+                  "title": "Dinero colombiano: tensión polifónica del discurso de nación",
+                  "author": "Raúl Firacative-Ruiz",
+                  "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "16:45",
+          "events": [
+            {
+              "id": "pausa-23-50",
+              "time": "16:45–17:00",
+              "start": "16:45",
+              "end": "17:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "logistics",
+              "kind": "Descanso",
+              "title": "Descanso"
+            }
+          ]
+        },
+        {
+          "start": "17:00",
+          "events": [
+            {
+              "id": "conferencia-7",
+              "time": "17:00–18:00",
+              "start": "17:00",
+              "end": "18:00",
+              "rooms": [
+                "Paraninfo"
+              ],
+              "type": "event",
+              "kind": "Conferencia 7",
+              "title": "La descolonización de la Estética y su importancia para la educación",
+              "people": "Dany Velásquez",
+              "portraits": [
+                {
+                  "src": "/images/invitados/invitado-4.jpg",
+                  "name": "Dany Velásquez"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "start": "18:15",
+          "events": [
+            {
+              "id": "concierto-clausura",
+              "time": "18:15–20:15",
+              "start": "18:15",
+              "end": "20:15",
+              "rooms": [
+                "Auditorio Clímaco Hernández"
+              ],
+              "type": "event",
+              "kind": "Clausura",
+              "title": "Concierto de clausura",
+              "people": "",
+              "note": "Biblioteca Central Jorge Palacios Preciado · UPTC, Tunja"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exhibition": {
+    "id": "exposicion-fotografica",
+    "time": "08:00–18:00",
+    "title": "Los petroglifos del río Caquetá y la Fuente de la Madre Serpiente (del Parque Arqueológico de San Agustín)",
+    "people": "Fernando Urbina Rangel",
+    "place": "Museo Arqueológico de Tunja",
+    "address": "Primer piso del Edificio Central de la UPTC"
+  }
+}
