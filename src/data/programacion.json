@@ -339,7 +339,13 @@
               "kind": "Teatro y conversatorio",
               "title": "Iara, la dialéctica del mito",
               "people": "Cuerpo Abierto Teatro",
-              "note": "Biblioteca Central Jorge Palacios Preciado · UPTC, Tunja"
+              "note": "Biblioteca Central Jorge Palacios Preciado · UPTC, Tunja",
+               "portraits": [
+                {
+                  "src": "/images/invitados/iara.png",
+                  "name": "Iara. La dialéctica del Mito"
+                }
+                ]
             }
           ]
         }
@@ -789,7 +795,7 @@
                 },
                 {
                   "title": "La identidad regional en el moño: prácticas discursivas de la copla tradicional desde una perspectiva sociolingüística",
-                  "author": "María José Nieves Herreño",
+                  "author": "María José Nieves Herreño y Stephanny Alejandra Páez Molina",
                   "affiliation": "Universidad Pedagógica y Tecnológica de Colombia"
                 },
                 {
