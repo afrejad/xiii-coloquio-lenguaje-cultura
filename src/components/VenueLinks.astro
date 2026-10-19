@@ -1,0 +1,23 @@
+---
+import { venues } from '../data/venues';
+
+interface Props {
+  rooms: string[];
+}
+
+const { rooms } = Astro.props;
+---
+
+{rooms.map((room, index) => {
+  const venue = venues.find(venue => venue.name === room);
+  return <Fragment>{index > 0 && ' y '}{venue ? (
+    <a class="venue-link" href={venue.url} target="_blank" rel="noopener noreferrer" aria-label={`${room}: ver ubicación en Google Maps (se abre en otra pestaña)`}>{room}<svg aria-hidden="true" viewBox="0 0 16 16" width="12" height="12"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></a>
+  ) : room}</Fragment>;
+})}
+
+<style>
+  .venue-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .venue-link:hover { text-decoration-thickness: 2px; }
+  .venue-link:focus-visible { outline: 3px solid #d3931c; outline-offset: 4px; }
+  .venue-link svg { display: inline; vertical-align: baseline; margin-left: .25em; }
+</style>

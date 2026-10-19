@@ -1,0 +1,166 @@
+---
+import { venues } from '../data/venues';
+import VenueLinks from './VenueLinks.astro';
+import 'leaflet/dist/leaflet.css';
+---
+
+<section id="ubicaciones" class="venue-section" aria-labelledby="venues-title">
+  <div class="venue-heading">
+    <div>
+      <p class="venue-eyebrow">UPTC · Sede central · Tunja</p>
+      <h2 id="venues-title">Los lugares <em>del encuentro</em></h2>
+    </div>
+    <p>Ubica los tres espacios del Coloquio. En la agenda, pulsa el nombre de cada lugar para abrir su ubicación en Google Maps.</p>
+  </div>
+  <div class="venue-layout">
+    <div class="venue-map-panel">
+      <div id="venue-map" class="venue-map" role="region" aria-label="Mapa interactivo de los tres lugares del Coloquio" aria-describedby="venue-map-status" hidden></div>
+      <p id="venue-map-status" class="map-status" role="status">Abre cualquiera de los lugares en Google Maps para consultar cómo llegar.</p>
+      <button type="button" id="show-all-venues" class="map-reset" hidden>Ver los tres lugares</button>
+      <noscript><p class="map-status">Activa JavaScript para explorar el mapa. Los enlaces a Google Maps están disponibles en la lista.</p></noscript>
+    </div>
+    <ol class="venue-list">
+      {venues.map((venue, index) => (
+        <li>
+          <span class="venue-number" aria-hidden="true">{index + 1}</span>
+          <div>
+            <h3><VenueLinks rooms={[venue.name]} /></h3>
+            <p>{venue.detail}</p>
+            <button type="button" class="venue-focus" data-venue-id={venue.id} hidden>Ubicar en el mapa</button>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<script>
+  import { venues } from '../data/venues';
+
+  const container = document.querySelector<HTMLElement>('#venue-map');
+  const status = document.querySelector<HTMLElement>('#venue-map-status');
+  const reset = document.querySelector<HTMLButtonElement>('#show-all-venues');
+
+  async function initializeMap() {
+    if (!container || !status || !reset) return;
+    try {
+      const { default: L } = await import('leaflet');
+      container.hidden = false;
+      const map = L.map(container, { scrollWheelZoom: false, zoomControl: false });
+      L.control.zoom({ zoomInTitle: 'Acercar', zoomOutTitle: 'Alejar' }).addTo(map);
+      const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+      tiles.on('tileerror', () => {
+        status.textContent = 'No se pudo cargar parte del mapa. Puedes abrir los lugares en Google Maps desde la lista.';
+      });
+
+      const bounds = L.latLngBounds(venues.map(venue => [venue.latitude, venue.longitude]));
+      const showAll = () => map.fitBounds(bounds, { padding: [45, 45], maxZoom: 17, animate: false });
+      showAll();
+      const markers = new Map();
+
+      venues.forEach((venue, index) => {
+        const popup = document.createElement('div');
+        popup.className = 'venue-popup';
+        const title = document.createElement('strong');
+        title.textContent = venue.name;
+        const link = document.createElement('a');
+        link.href = venue.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Abrir en Google Maps ↗';
+        link.setAttribute('aria-label', `${venue.name}: abrir en Google Maps (se abre en otra pestaña)`);
+        popup.append(title, link);
+
+        const marker = L.marker([venue.latitude, venue.longitude], {
+          title: venue.name,
+          alt: `${index + 1}. ${venue.name}`,
+          icon: L.divIcon({
+            className: 'venue-marker',
+            html: `<span aria-hidden="true">${index + 1}</span>`,
+            iconSize: [36, 36],
+            iconAnchor: [18, 18],
+            popupAnchor: [0, -20],
+          }),
+        }).addTo(map).bindPopup(popup);
+        marker.getElement()?.setAttribute('aria-label', `${index + 1}. ${venue.name}`);
+        markers.set(venue.id, marker);
+      });
+
+      status.textContent = 'Selecciona un punto para ver el lugar y abrir Google Maps. Usa + y − para acercar o alejar.';
+      reset.hidden = false;
+      reset.addEventListener('click', () => { map.closePopup(); showAll(); });
+      document.querySelectorAll<HTMLButtonElement>('.venue-focus').forEach(button => {
+        button.hidden = false;
+        button.addEventListener('click', () => {
+          const marker = markers.get(button.dataset.venueId);
+          if (!marker) return;
+          map.setView(marker.getLatLng(), 18, { animate: false });
+          marker.openPopup();
+          container.scrollIntoView({ block: 'center', behavior: 'instant' });
+          marker.getElement()?.focus({ preventScroll: true });
+        });
+      });
+      new ResizeObserver(() => { map.invalidateSize(); }).observe(container);
+    } catch (error) {
+      console.error('No se pudo inicializar el mapa de los lugares.', error);
+      container.hidden = true;
+      status.textContent = 'El mapa no está disponible en este momento. Consulta las ubicaciones con los enlaces a Google Maps.';
+    }
+  }
+
+  const section = document.querySelector('#ubicaciones');
+  if (section && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        observer.disconnect();
+        initializeMap();
+      }
+    }, { rootMargin: '300px' });
+    observer.observe(section);
+  } else {
+    initializeMap();
+  }
+</script>
+
+<style>
+  .venue-section { margin: 0 0 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); scroll-margin-top: calc(var(--site-header-height, 82px) + 94px); }
+  .venue-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; margin-bottom: 1.8rem; }
+  .venue-eyebrow { margin: 0 0 .8rem; font: 600 .91rem/1.2 'Barlow Condensed', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--clay); }
+  .venue-heading h2 { margin: 0; font: 600 clamp(2.1rem, 3.5vw, 3.2rem)/1.06 'Cormorant Garamond', Georgia, serif; }
+  .venue-heading em { font-style: normal; color: var(--plum); }
+  .venue-heading > p { margin: 0; font-size: .92rem; }
+  .venue-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(240px, 1fr); border: 1px solid var(--rule); background: #fffaf2; }
+  .venue-map-panel { min-width: 0; }
+  .venue-map { height: 440px; background: #e6e2d6; z-index: 0; font-family: Inter, Arial, sans-serif; }
+  .map-status { margin: 0; padding: .85rem 1rem; font-size: .78rem; line-height: 1.5; }
+  .map-reset, .venue-focus { border: 0; padding: .4rem 0; background: transparent; color: var(--clay); font: 600 .8rem/1.4 Inter, Arial, sans-serif; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  .map-reset { margin: 0 1rem 1rem; }
+  .venue-list { list-style: none; margin: 0; padding: .5rem 1.4rem; border-left: 1px solid var(--rule); }
+  .venue-list li { display: flex; gap: .8rem; padding: 1.4rem 0; border-bottom: 1px solid var(--rule); }
+  .venue-list li:last-child { border-bottom: 0; }
+  .venue-number { flex-shrink: 0; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--clay); color: #fffaf2; font-weight: 700; }
+  .venue-list h3 { margin: 0 0 .55rem; font: 600 1.35rem/1.2 'Cormorant Garamond', Georgia, serif; }
+  .venue-list p { margin: 0 0 .4rem; color: #625d51; font-size: .8rem; }
+  .venue-section :is(button, a):focus-visible { outline: 3px solid #d3931c; outline-offset: 4px; }
+  .venue-map :global(.venue-marker) { display: grid; place-items: center; border: 3px solid #fffaf2; border-radius: 50%; background: #892412; color: white; box-shadow: 0 2px 7px #183b2c66; font: 700 16px/1 Inter, Arial, sans-serif; }
+  .venue-map :global(.venue-marker:focus-visible) { outline: 3px solid #d3931c; outline-offset: 4px; }
+  .venue-map :global(.venue-popup strong) { display: block; margin-bottom: .5rem; color: #183b2c; }
+  .venue-map :global(.venue-popup a) { color: #892412; text-decoration: underline; text-underline-offset: 3px; }
+  .venue-map :global(.leaflet-control-attribution a) { text-decoration: underline; }
+  @media (max-width: 760px) {
+    .venue-heading, .venue-layout { grid-template-columns: minmax(0, 1fr); }
+    .venue-heading { gap: 1rem; }
+    .venue-map { height: 360px; }
+    .venue-list { border-left: 0; border-top: 1px solid var(--rule); }
+    .venue-list li { padding: 1rem 0; }
+  }
+  @media print {
+    .venue-map-panel, .venue-focus { display: none; }
+    .venue-layout { display: block; }
+    .venue-list { border-left: 0; }
+    .venue-section { break-inside: avoid; }
+  }
+</style>
